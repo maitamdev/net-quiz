@@ -2,16 +2,21 @@
    NetQuiz - Quiz Interface
    ======================================== */
 
-import { questions } from './data.js';
+import { fetchQuestions, saveResult } from './data.js';
 
-export function renderQuiz(container, params = {}) {
-  const quizQuestions = params.mode === 'review'
-    ? questions.slice(0, 10)
-    : params.mode === 'bookmarks'
-    ? questions.slice(0, 8)
-    : params.chapter
-    ? questions.filter(q => q.chapter === parseInt(params.chapter))
-    : questions;
+export async function renderQuiz(container, params = {}) {
+  // Show loading
+  container.innerHTML = `<div class="quiz-page" style="justify-content: center; align-items: center;"><div class="loading-spinner"></div></div>`;
+
+  // Fetch questions from Supabase
+  let allQuestions = [];
+  if (params.chapter) {
+    allQuestions = await fetchQuestions(parseInt(params.chapter));
+  } else {
+    allQuestions = await fetchQuestions();
+  }
+
+  const quizQuestions = allQuestions;
 
   const totalQ = quizQuestions.length;
   const state = {
@@ -19,6 +24,7 @@ export function renderQuiz(container, params = {}) {
     answers: new Array(totalQ).fill(null),
     flagged: new Set(),
     showExplanation: false,
+    startTime: Date.now(),
   };
 
   function render() {
@@ -192,8 +198,17 @@ export function renderQuiz(container, params = {}) {
         if (state.answers[i] === q.correct) correct++;
       });
 
-      // Navigate to results
-      window.location.hash = `/results?correct=${correct}&total=${totalQ}&time=1245`;
+      // Save result to Supabase
+      const elapsed = Math.floor((Date.now() - state.startTime) / 1000);
+      saveResult({
+        score: correct,
+        total: totalQ,
+        timeSpent: elapsed,
+        mode: 'practice',
+        chapterId: params.chapter ? parseInt(params.chapter) : null,
+      });
+
+      window.location.hash = `/results?correct=${correct}&total=${totalQ}&time=${elapsed}`;
     });
   }
 

@@ -2,9 +2,9 @@
    NetQuiz - Practice Mode Selection
    ======================================== */
 
-import { chapters } from './data.js';
+import { fetchChapters } from './data.js';
 
-export function renderPractice(container) {
+export async function renderPractice(container) {
   container.innerHTML = `
     <div class="practice-page container">
       <div class="practice-header">
@@ -13,7 +13,7 @@ export function renderPractice(container) {
       </div>
 
       <div class="practice-grid" id="practiceGrid">
-        <!-- Practice by Chapter -->
+        <!-- Luyện theo Chương -->
         <div class="card practice-card" data-mode="chapter" id="card-chapter">
           <div class="practice-card-icon icon-indigo">
             <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
@@ -26,9 +26,9 @@ export function renderPractice(container) {
           <h3>Luyện theo Chương</h3>
           <p>Học có hệ thống qua từng chương với các câu hỏi tập trung vào chủ đề cụ thể.</p>
           <div class="practice-card-footer">
-            <span class="practice-card-meta">
+            <span class="practice-card-meta" id="chapterCount">
               <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg>
-              ${chapters.length || 'Không có'} chương
+              Đang tải...
             </span>
             <div class="practice-card-arrow">
               <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg>
@@ -36,7 +36,7 @@ export function renderPractice(container) {
           </div>
         </div>
 
-        <!-- Mock Exam -->
+        <!-- Thi Thử -->
         <div class="card practice-card" data-mode="exam" id="card-exam">
           <div class="practice-card-icon icon-cyan">
             <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
@@ -57,7 +57,7 @@ export function renderPractice(container) {
           </div>
         </div>
 
-        <!-- Incorrect Questions Review -->
+        <!-- Câu hỏi Sai -->
         <div class="card practice-card" data-mode="review" id="card-review">
           <div class="practice-card-icon icon-purple">
             <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
@@ -71,7 +71,7 @@ export function renderPractice(container) {
           <div class="practice-card-footer">
             <span class="practice-card-meta">
               <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="15" y1="9" x2="9" y2="15"/><line x1="9" y1="9" x2="15" y2="15"/></svg>
-              -- câu hỏi
+              Sắp có
             </span>
             <div class="practice-card-arrow">
               <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg>
@@ -79,7 +79,7 @@ export function renderPractice(container) {
           </div>
         </div>
 
-        <!-- Bookmarked -->
+        <!-- Câu hỏi Đánh dấu -->
         <div class="card practice-card" data-mode="bookmarks" id="card-bookmarks">
           <div class="practice-card-icon icon-pink">
             <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
@@ -91,7 +91,7 @@ export function renderPractice(container) {
           <div class="practice-card-footer">
             <span class="practice-card-meta">
               <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"/></svg>
-              -- đã lưu
+              Sắp có
             </span>
             <div class="practice-card-arrow">
               <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg>
@@ -100,7 +100,7 @@ export function renderPractice(container) {
         </div>
       </div>
 
-      <!-- Chapter list (hidden by default, shown when chapter card is clicked) -->
+      <!-- Chapter list -->
       <div id="chapterListSection" style="display: none;">
         <button class="back-btn" id="backToModes">
           <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="15 18 9 12 15 6"/></svg>
@@ -115,6 +115,18 @@ export function renderPractice(container) {
     </div>
   `;
 
+  // Load chapters from Supabase
+  const chapters = await fetchChapters();
+
+  // Update chapter count
+  const countEl = container.querySelector('#chapterCount');
+  if (countEl) {
+    countEl.innerHTML = `
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg>
+      ${chapters.length || 'Không có'} chương
+    `;
+  }
+
   // Render chapter list
   const chapterListEl = container.querySelector('#chapterList');
   if (chapters.length === 0) {
@@ -125,7 +137,7 @@ export function renderPractice(container) {
           <path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/>
         </svg>
         <h3>Chưa có chương nào</h3>
-        <p>Các chương sẽ xuất hiện sau khi kết nối với backend.</p>
+        <p>Các chương sẽ xuất hiện sau khi thêm dữ liệu.</p>
       </div>
     `;
   } else {
@@ -137,14 +149,10 @@ export function renderPractice(container) {
           <div class="chapter-number">${ch.id}</div>
           <div>
             <div class="chapter-name">${ch.name}</div>
-            <div class="chapter-count">${ch.questionCount} questions</div>
+            <div class="chapter-count">${ch.questionCount} câu hỏi</div>
           </div>
         </div>
         <div class="chapter-progress">
-          <div class="chapter-progress-text">${ch.progress}%</div>
-          <div class="progress-bar progress-bar-sm">
-            <div class="progress-bar-fill" style="width: ${ch.progress}%"></div>
-          </div>
           <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--text-tertiary)" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg>
         </div>
       `;

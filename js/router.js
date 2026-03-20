@@ -21,7 +21,7 @@ export class Router {
     window.location.hash = path;
   }
 
-  handleRoute() {
+  async handleRoute() {
     const hash = window.location.hash.slice(1) || '/';
     const path = hash.split('?')[0];
 
@@ -95,7 +95,7 @@ export class Router {
       pageDiv.className = 'page-enter';
       this.app.appendChild(pageDiv);
 
-      handler(pageDiv, params);
+      await handler(pageDiv, params);
       this.currentPage = path;
 
       // Scroll to top

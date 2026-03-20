@@ -2,10 +2,11 @@
    NetQuiz - Dashboard Page
    ======================================== */
 
-import { userStats } from './data.js';
+import { fetchDashboardStats } from './data.js';
 
-export function renderDashboard(container) {
-  const s = userStats;
+export async function renderDashboard(container) {
+  container.innerHTML = `<div style="display:flex;justify-content:center;align-items:center;min-height:60vh;"><div class="loading-spinner"></div></div>`;
+  const s = await fetchDashboardStats();
 
   container.innerHTML = `
     <div class="dashboard-page container">

@@ -2,12 +2,15 @@
    NetQuiz - Exam Mode
    ======================================== */
 
-import { questions } from './data.js';
+import { fetchExamQuestions, saveResult } from './data.js';
 
-export function renderExam(container) {
-  const examQuestions = [...questions].sort(() => Math.random() - 0.5).slice(0, 15);
+export async function renderExam(container) {
+  // Show loading
+  container.innerHTML = `<div class="quiz-page" style="justify-content: center; align-items: center;"><div class="loading-spinner"></div></div>`;
+
+  const examQuestions = await fetchExamQuestions(15);
   const totalQ = examQuestions.length;
-  const EXAM_TIME = 45 * 60; // 45 minutes in seconds
+  const EXAM_TIME = 45 * 60;
 
   const state = {
     current: 0,
@@ -49,7 +52,7 @@ export function renderExam(container) {
       const progressText = document.querySelector('.exam-progress-text');
       if (progressText) {
         const answered = state.answers.filter(a => a !== null).length;
-        progressText.textContent = `${answered}/${totalQ} answered`;
+        progressText.textContent = `${answered}/${totalQ} đã trả lời`;
       }
 
       if (state.timeLeft <= 0) {
@@ -69,6 +72,16 @@ export function renderExam(container) {
     });
 
     const timeSpent = EXAM_TIME - state.timeLeft;
+
+    // Save to Supabase
+    saveResult({
+      score: correct,
+      total: totalQ,
+      timeSpent,
+      mode: 'exam',
+      chapterId: null,
+    });
+
     window.location.hash = `/results?correct=${correct}&total=${totalQ}&time=${timeSpent}&mode=exam`;
   }
 

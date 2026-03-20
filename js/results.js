@@ -2,7 +2,8 @@
    NetQuiz - Results Page
    ======================================== */
 
-import { questions } from './data.js';
+// Results page doesn't need to fetch questions from DB
+// It receives score data via URL params
 
 export function renderResults(container, params = {}) {
   const correct = parseInt(params.correct) || 10;
@@ -30,20 +31,8 @@ export function renderResults(container, params = {}) {
   const circumference = 2 * Math.PI * radius;
   const offset = circumference - (percentage / 100) * circumference;
 
-  // Sort sample questions for topic performance display
-  const topicMap = {};
-  questions.slice(0, total).forEach((q, i) => {
-    if (!topicMap[q.topic]) topicMap[q.topic] = { correct: 0, total: 0 };
-    topicMap[q.topic].total++;
-    if (i < correct) topicMap[q.topic].correct++;
-  });
-
-  const topics = Object.entries(topicMap).map(([topic, data]) => ({
-    topic,
-    correct: data.correct,
-    total: data.total,
-    percentage: Math.round((data.correct / data.total) * 100),
-  }));
+  // Topic performance - will be available when question data is passed
+  const topics = [];
 
   container.innerHTML = `
     <div class="results-page container page-enter">
@@ -156,39 +145,14 @@ export function renderResults(container, params = {}) {
         </div>
       </div>
 
-      <!-- Answer Review Preview -->
+      <!-- Answer Review -->
       <div class="results-review">
         <h3>
           Xem lại Câu trả lời
           <span class="badge badge-primary" style="font-weight: 600;">${total} câu</span>
         </h3>
-        <div class="review-filters">
-          <button class="chip active" data-filter="all">Tất cả</button>
-          <button class="chip" data-filter="correct">✓ Đúng</button>
-          <button class="chip" data-filter="incorrect">✗ Sai</button>
-        </div>
-        <div class="review-list" id="reviewList">
-          ${questions.slice(0, Math.min(total, 5)).map((q, i) => {
-            const isCorrect = i < correct;
-            return `
-              <div class="review-item" data-type="${isCorrect ? 'correct' : 'incorrect'}">
-                <div class="review-item-header">
-                  <div class="review-item-q">Câu ${i + 1}</div>
-                  <div class="review-item-status badge ${isCorrect ? 'badge-success' : 'badge-danger'}">
-                    ${isCorrect ? '✓ Đúng' : '✗ Sai'}
-                  </div>
-                </div>
-                <div class="review-item-question">${q.text}</div>
-                <div class="review-answers-grid">
-                  ${q.answers.map(a => `
-                    <div class="review-answer ${a.letter === q.correct ? 'correct-answer' : ''}${!isCorrect && a.letter !== q.correct && a.letter === q.answers[1].letter ? ' user-wrong' : ''}">
-                      <strong>${a.letter}.</strong> ${a.text}
-                    </div>
-                  `).join('')}
-                </div>
-              </div>
-            `;
-          }).join('')}
+        <div style="padding: var(--space-8); text-align: center; color: var(--text-tertiary);">
+          <p>Xem lại chi tiết câu trả lời sẽ có trong phiên bản tiếp theo.</p>
         </div>
       </div>
 

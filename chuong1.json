@@ -1,0 +1,367 @@
+{
+  "chapter": 1,
+  "title": "Chương 1 - Khái niệm cơ bản và tầng ứng dụng",
+  "total_questions": 30,
+  "questions": [
+    {
+      "id": 1,
+      "question": "Là một dịch vụ hướng kết nối sử dụng giao thức tầng dưới là TCP để truyền file trong mô hình TCP/IP là giao thức nào?",
+      "options": {
+        "A": "HTTP",
+        "B": "FTP",
+        "C": "ARP",
+        "D": "DNS"
+      },
+      "correct_answer": "B",
+      "explanation": "FTP là giao thức truyền tệp hoạt động ở tầng ứng dụng và sử dụng TCP để truyền dữ liệu."
+    },
+    {
+      "id": 2,
+      "question": "Thông điệp HTTP Request gồm mấy phần?",
+      "options": {
+        "A": "2 phần",
+        "B": "3 phần",
+        "C": "4 phần",
+        "D": "5 phần"
+      },
+      "correct_answer": "B",
+      "explanation": "HTTP Request thường gồm 3 phần: dòng yêu cầu, phần tiêu đề header và phần thân body."
+    },
+    {
+      "id": 3,
+      "question": "Trong HTTP Request, phần body thường chứa nội dung gì?",
+      "options": {
+        "A": "Địa chỉ MAC của máy gửi",
+        "B": "Dữ liệu mà client gửi lên server",
+        "C": "Tên miền của website",
+        "D": "Mã lỗi của server"
+      },
+      "correct_answer": "B",
+      "explanation": "Body chứa dữ liệu gửi lên server như form, JSON, XML hoặc tệp đính kèm."
+    },
+    {
+      "id": 4,
+      "question": "Thông điệp HTTP Response gồm mấy phần?",
+      "options": {
+        "A": "2 phần",
+        "B": "3 phần",
+        "C": "4 phần",
+        "D": "1 phần"
+      },
+      "correct_answer": "B",
+      "explanation": "HTTP Response gồm 3 phần chính: dòng trạng thái, header và body."
+    },
+    {
+      "id": 5,
+      "question": "HTTP khác HTTPS chủ yếu ở điểm nào?",
+      "options": {
+        "A": "HTTPS chậm hơn nên ít dùng",
+        "B": "HTTP dùng cáp quang còn HTTPS dùng cáp đồng",
+        "C": "HTTPS có mã hóa bằng SSL/TLS, HTTP thì không",
+        "D": "HTTP chỉ dùng trong mạng LAN"
+      },
+      "correct_answer": "C",
+      "explanation": "HTTPS là HTTP kết hợp với SSL/TLS để mã hóa dữ liệu, tăng tính bảo mật."
+    },
+    {
+      "id": 6,
+      "question": "Có thể thiết lập cấu hình DNS Server bằng bao nhiêu cách cơ bản?",
+      "options": {
+        "A": "1 cách",
+        "B": "2 cách",
+        "C": "3 cách",
+        "D": "4 cách"
+      },
+      "correct_answer": "B",
+      "explanation": "Thông thường có 2 cách cơ bản: cấu hình tĩnh thủ công hoặc nhận tự động qua DHCP."
+    },
+    {
+      "id": 7,
+      "question": "Giao thức trung tâm của hệ thống thư điện tử là giao thức nào?",
+      "options": {
+        "A": "FTP",
+        "B": "SMTP",
+        "C": "ARP",
+        "D": "ICMP"
+      },
+      "correct_answer": "B",
+      "explanation": "SMTP là giao thức chính dùng để gửi thư điện tử giữa các máy chủ thư và từ client lên server."
+    },
+    {
+      "id": 8,
+      "question": "Giao thức ở tầng ứng dụng dùng để lấy thư điện tử từ mail server về thông qua kết nối TCP/IP là gì?",
+      "options": {
+        "A": "SMTP",
+        "B": "DNS",
+        "C": "POP3",
+        "D": "ARP"
+      },
+      "correct_answer": "C",
+      "explanation": "Trong dạng câu hỏi cơ bản, đáp án thường là POP3. IMAP cũng là giao thức nhận thư nhưng nâng cao hơn."
+    },
+    {
+      "id": 9,
+      "question": "Trong mô hình kiến trúc mạng máy tính nào sẽ có một máy luôn hoạt động 24/7 để nhận và xử lý yêu cầu từ máy khác?",
+      "options": {
+        "A": "Peer to Peer",
+        "B": "Client Server",
+        "C": "Bus",
+        "D": "Ring"
+      },
+      "correct_answer": "B",
+      "explanation": "Trong mô hình Client-Server, máy chủ phục vụ liên tục cho các máy khách."
+    },
+    {
+      "id": 10,
+      "question": "Ưu điểm lớn nhất của kiến trúc ngang hàng Peer to Peer là gì?",
+      "options": {
+        "A": "Quản lý tập trung rất tốt",
+        "B": "Không cần máy chủ trung tâm, chi phí thấp",
+        "C": "Bảo mật tuyệt đối",
+        "D": "Tốc độ luôn cao nhất"
+      },
+      "correct_answer": "B",
+      "explanation": "Mạng ngang hàng dễ triển khai, chi phí thấp vì không cần máy chủ trung tâm."
+    },
+    {
+      "id": 11,
+      "question": "Mạng máy tính là gì?",
+      "options": {
+        "A": "Tập hợp các máy tính kết nối với nhau để trao đổi dữ liệu và chia sẻ tài nguyên",
+        "B": "Một máy tính dùng nhiều hệ điều hành",
+        "C": "Một phần mềm quản lý dữ liệu",
+        "D": "Một hệ thống chỉ có máy in"
+      },
+      "correct_answer": "A",
+      "explanation": "Mạng máy tính là hệ thống các thiết bị được kết nối để trao đổi thông tin và dùng chung tài nguyên."
+    },
+    {
+      "id": 12,
+      "question": "Mục đích chính của mạng máy tính là gì?",
+      "options": {
+        "A": "Tăng kích thước bộ nhớ RAM",
+        "B": "Chia sẻ tài nguyên và trao đổi thông tin",
+        "C": "Giảm giá thành máy tính",
+        "D": "Thay thế hoàn toàn phần mềm"
+      },
+      "correct_answer": "B",
+      "explanation": "Mạng máy tính giúp các thiết bị trao đổi dữ liệu và dùng chung tài nguyên như máy in, file, Internet."
+    },
+    {
+      "id": 13,
+      "question": "Thiết bị nào sau đây thường được dùng để kết nối nhiều máy trong cùng một mạng LAN hiện đại?",
+      "options": {
+        "A": "Hub",
+        "B": "Switch",
+        "C": "Modem quay số",
+        "D": "Repeater"
+      },
+      "correct_answer": "B",
+      "explanation": "Switch là thiết bị phổ biến để kết nối các máy trong mạng LAN."
+    },
+    {
+      "id": 14,
+      "question": "Thiết bị nào dùng để định tuyến gói tin giữa các mạng khác nhau?",
+      "options": {
+        "A": "Hub",
+        "B": "Switch",
+        "C": "Router",
+        "D": "NIC"
+      },
+      "correct_answer": "C",
+      "explanation": "Router hoạt động ở tầng mạng, dùng để chuyển gói tin giữa các mạng khác nhau."
+    },
+    {
+      "id": 15,
+      "question": "Card mạng NIC có chức năng chính là gì?",
+      "options": {
+        "A": "Lưu trữ dữ liệu",
+        "B": "Kết nối máy tính với mạng",
+        "C": "Tăng tốc CPU",
+        "D": "Điều khiển màn hình"
+      },
+      "correct_answer": "B",
+      "explanation": "NIC là bộ phận cho phép máy tính giao tiếp với mạng."
+    },
+    {
+      "id": 16,
+      "question": "Mạng LAN là mạng có phạm vi như thế nào?",
+      "options": {
+        "A": "Phạm vi nhỏ như phòng, tòa nhà, trường học",
+        "B": "Toàn cầu",
+        "C": "Liên lục địa",
+        "D": "Chỉ trong vệ tinh"
+      },
+      "correct_answer": "A",
+      "explanation": "LAN là mạng cục bộ, phạm vi nhỏ."
+    },
+    {
+      "id": 17,
+      "question": "Mạng WAN là mạng có đặc điểm nào?",
+      "options": {
+        "A": "Phạm vi rất nhỏ",
+        "B": "Chỉ dùng trong một phòng",
+        "C": "Phạm vi rộng, có thể giữa nhiều tỉnh hoặc quốc gia",
+        "D": "Không cần thiết bị mạng"
+      },
+      "correct_answer": "C",
+      "explanation": "WAN là mạng diện rộng, kết nối trên phạm vi lớn."
+    },
+    {
+      "id": 18,
+      "question": "Internet là gì?",
+      "options": {
+        "A": "Một phần mềm duyệt web",
+        "B": "Một mạng toàn cầu kết nối nhiều mạng máy tính với nhau",
+        "C": "Một loại dây mạng",
+        "D": "Một máy chủ lớn"
+      },
+      "correct_answer": "B",
+      "explanation": "Internet là hệ thống liên kết các mạng máy tính trên toàn thế giới."
+    },
+    {
+      "id": 19,
+      "question": "Topologi hình sao Star có đặc điểm nào?",
+      "options": {
+        "A": "Mọi máy nối thành vòng tròn",
+        "B": "Mỗi máy nối vào một thiết bị trung tâm",
+        "C": "Không có dây dẫn",
+        "D": "Mọi máy nối trực tiếp với nhau"
+      },
+      "correct_answer": "B",
+      "explanation": "Trong topo hình sao, các nút kết nối đến một thiết bị trung tâm như switch."
+    },
+    {
+      "id": 20,
+      "question": "Ưu điểm nổi bật của topo hình sao là gì?",
+      "options": {
+        "A": "Dễ quản lý và dễ phát hiện lỗi",
+        "B": "Không cần thiết bị trung tâm",
+        "C": "Chi phí luôn thấp nhất",
+        "D": "Không bao giờ bị đứt mạng"
+      },
+      "correct_answer": "A",
+      "explanation": "Hình sao dễ lắp đặt, dễ quản lý và khi một nhánh hỏng thường không ảnh hưởng toàn mạng."
+    },
+    {
+      "id": 21,
+      "question": "Trong mô hình TCP/IP, giao thức TCP thuộc tầng nào?",
+      "options": {
+        "A": "Tầng ứng dụng",
+        "B": "Tầng giao vận",
+        "C": "Tầng mạng",
+        "D": "Tầng vật lý"
+      },
+      "correct_answer": "B",
+      "explanation": "TCP là giao thức thuộc tầng giao vận."
+    },
+    {
+      "id": 22,
+      "question": "Trong mô hình TCP/IP, giao thức IP thuộc tầng nào?",
+      "options": {
+        "A": "Tầng ứng dụng",
+        "B": "Tầng giao vận",
+        "C": "Tầng mạng",
+        "D": "Tầng liên kết dữ liệu"
+      },
+      "correct_answer": "C",
+      "explanation": "IP là giao thức cốt lõi của tầng mạng."
+    },
+    {
+      "id": 23,
+      "question": "HTTP là giao thức thuộc tầng nào?",
+      "options": {
+        "A": "Tầng vật lý",
+        "B": "Tầng liên kết dữ liệu",
+        "C": "Tầng ứng dụng",
+        "D": "Tầng mạng"
+      },
+      "correct_answer": "C",
+      "explanation": "HTTP là giao thức tầng ứng dụng dùng để truyền tải nội dung web."
+    },
+    {
+      "id": 24,
+      "question": "Địa chỉ IP dùng để xác định điều gì?",
+      "options": {
+        "A": "Địa chỉ logic của thiết bị trên mạng",
+        "B": "Tên người dùng",
+        "C": "Mã sản phẩm máy tính",
+        "D": "Tốc độ mạng"
+      },
+      "correct_answer": "A",
+      "explanation": "IP là địa chỉ logic giúp định danh thiết bị trên mạng."
+    },
+    {
+      "id": 25,
+      "question": "Địa chỉ MAC là gì?",
+      "options": {
+        "A": "Địa chỉ logic trên Internet",
+        "B": "Địa chỉ vật lý của thiết bị mạng",
+        "C": "Tên miền máy chủ",
+        "D": "Địa chỉ email"
+      },
+      "correct_answer": "B",
+      "explanation": "MAC là địa chỉ phần cứng của card mạng."
+    },
+    {
+      "id": 26,
+      "question": "Giao thức dùng để phân giải tên miền sang địa chỉ IP là gì?",
+      "options": {
+        "A": "DNS",
+        "B": "FTP",
+        "C": "SMTP",
+        "D": "ARP"
+      },
+      "correct_answer": "A",
+      "explanation": "DNS giúp chuyển tên miền như google.com thành địa chỉ IP."
+    },
+    {
+      "id": 27,
+      "question": "Khi người dùng mở trình duyệt truy cập trang web, giao thức thường dùng là gì?",
+      "options": {
+        "A": "HTTP",
+        "B": "ARP",
+        "C": "RIP",
+        "D": "ICMP"
+      },
+      "correct_answer": "A",
+      "explanation": "HTTP là giao thức phổ biến để trình duyệt trao đổi dữ liệu với máy chủ web."
+    },
+    {
+      "id": 28,
+      "question": "Trong quá trình truyền dữ liệu theo mô hình phân tầng, dữ liệu đi từ tầng trên xuống tầng dưới gọi là gì?",
+      "options": {
+        "A": "Đóng gói",
+        "B": "Giải mã",
+        "C": "Định tuyến",
+        "D": "Phát quảng bá"
+      },
+      "correct_answer": "A",
+      "explanation": "Khi đi xuống các tầng, dữ liệu được thêm thông tin điều khiển vào từng lớp, gọi là đóng gói."
+    },
+    {
+      "id": 29,
+      "question": "Khi dữ liệu đến bên nhận và được xử lý ngược từ tầng dưới lên tầng trên, quá trình đó gọi là gì?",
+      "options": {
+        "A": "Mã hóa",
+        "B": "Tháo gói",
+        "C": "Cấp phát",
+        "D": "Phân mảnh"
+      },
+      "correct_answer": "B",
+      "explanation": "Bên nhận sẽ loại bỏ các thông tin điều khiển theo từng tầng, gọi là tháo gói."
+    },
+    {
+      "id": 30,
+      "question": "Một số tiêu chí cơ bản để đánh giá hiệu năng mạng là gì?",
+      "options": {
+        "A": "Độ trễ, băng thông, thông lượng",
+        "B": "Màu dây mạng, kích thước máy tính, nhãn thiết bị",
+        "C": "Tên máy, mật khẩu, hình nền",
+        "D": "Hãng sản xuất bàn phím"
+      },
+      "correct_answer": "A",
+      "explanation": "Hiệu năng mạng thường được đánh giá qua độ trễ, băng thông và thông lượng."
+    }
+  ]
+}
