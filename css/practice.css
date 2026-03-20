@@ -38,12 +38,13 @@
 .course-card {
   background: var(--bg-card);
   border: 1px solid var(--border-primary);
-  border-radius: var(--radius-2xl);
+  border-radius: 4px;
   overflow: hidden;
   cursor: pointer;
   transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   display: flex;
   flex-direction: column;
+  aspect-ratio: 1;
 }
 
 .course-card:hover {
@@ -59,10 +60,11 @@
 /* Image Banner */
 .course-card-img {
   width: 100%;
-  aspect-ratio: 16 / 10;
+  height: 55%;
   position: relative;
   overflow: hidden;
   background: var(--bg-tertiary);
+  flex-shrink: 0;
 }
 
 .course-card-img img {
