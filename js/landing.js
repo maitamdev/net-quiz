@@ -92,59 +92,10 @@ export function renderLanding(container) {
         </div>
       </section>
 
-      <!-- Why Choose Us -->
-      <section class="why-section container">
-        <div class="stats-header">
-          <h2>Tại sao chọn <span class="hero-gradient-text">NetQuiz</span>?</h2>
-          <p>Tất cả những gì bạn cần để chinh phục Mạng Máy Tính</p>
-        </div>
-        <div class="why-grid">
-          <div class="card why-card">
-            <div class="icon-box icon-box-indigo icon-box-lg">
-              <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                <rect x="2" y="3" width="20" height="14" rx="2" ry="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/>
-              </svg>
-            </div>
-            <h3>Học Thích ứng</h3>
-            <p>AI nhận diện điểm yếu của bạn và gợi ý các câu hỏi phù hợp để cải thiện hiệu quả.</p>
-          </div>
-          <div class="card why-card">
-            <div class="icon-box icon-box-cyan icon-box-lg">
-              <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                <path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/>
-                <polyline points="3.27 6.96 12 12.01 20.73 6.96"/><line x1="12" y1="22.08" x2="12" y2="12"/>
-              </svg>
-            </div>
-            <h3>Nội dung Có cấu trúc</h3>
-            <p>Câu hỏi được sắp xếp theo chương, theo giáo trình Mạng Máy Tính chuẩn để học có hệ thống.</p>
-          </div>
-          <div class="card why-card">
-            <div class="icon-box icon-box-purple icon-box-lg">
-              <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                <line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/>
-              </svg>
-            </div>
-            <h3>Thống kê Chi tiết</h3>
-            <p>Theo dõi tiến độ với biểu đồ đẹp mắt, nhận diện xu hướng và giám sát sự tiến bộ theo thời gian.</p>
-          </div>
-        </div>
-      </section>
-
-      <!-- CTA Section -->
-      <section class="cta-section container">
-        <div class="cta-card">
-          <h2>Sẵn sàng <span class="hero-gradient-text">Nâng cấp</span>?</h2>
-          <p>Bắt đầu luyện tập ngay và xây dựng nền tảng vững chắc về Mạng Máy Tính.</p>
-          <div class="hero-buttons">
-            <a href="#/practice" class="btn btn-primary btn-lg hero-btn-glow">Bắt đầu Miễn phí</a>
-            <a href="#/dashboard" class="btn btn-secondary btn-lg">Xem Bảng điều khiển</a>
-          </div>
-        </div>
-      </section>
 
       <!-- Footer -->
       <footer class="footer container">
-        <p>© 2026 NetQuiz — Xây dựng cho sinh viên muốn <a href="#/">chinh phục kỳ thi mạng</a>.</p>
+        <p>© 2026 Ôn Tập MMT — Thiết kế bởi <a href="https://github.com/maitamdev">MaiTamDev</a></p>
       </footer>
     </div>
   `;
