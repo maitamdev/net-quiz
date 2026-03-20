@@ -33,20 +33,6 @@ export function renderLanding(container) {
             </a>
           </div>
 
-          <div class="hero-features">
-            <div class="hero-feature">
-              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 20h9"/><path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"/></svg>
-              <span>500+ Câu hỏi Luyện tập</span>
-            </div>
-            <div class="hero-feature">
-              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg>
-              <span>8 Chương Kiến thức</span>
-            </div>
-            <div class="hero-feature">
-              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
-              <span>Giải thích bằng AI</span>
-            </div>
-          </div>
           </div>
           <div class="hero-image">
             <img src="/images/1000068108.jpg" alt="Tác giả" class="hero-author-img" />

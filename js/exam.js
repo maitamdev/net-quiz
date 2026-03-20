@@ -8,7 +8,7 @@ export async function renderExam(container) {
   // Show loading
   container.innerHTML = `<div class="quiz-page" style="justify-content: center; align-items: center;"><div class="loading-spinner"></div></div>`;
 
-  const examQuestions = await fetchExamQuestions(15);
+  const examQuestions = await fetchExamQuestions(45);
   const totalQ = examQuestions.length;
   const EXAM_TIME = 45 * 60;
 

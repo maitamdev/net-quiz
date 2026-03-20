@@ -52,8 +52,8 @@ export async function renderPractice(container) {
     img: '/images/exam.png',
     badge: 'Thi thử',
     title: 'Thi Thử',
-    desc: 'Bài thi mô phỏng với giới hạn thời gian 45 phút',
-    stat: '45 phút',
+    desc: '45 câu ngẫu nhiên từ tất cả chương, giới hạn 45 phút',
+    stat: '45 câu • 45 phút',
     action: 'Bắt đầu',
     onClick: () => { window.location.hash = '/exam'; }
   }));
