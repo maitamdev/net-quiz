@@ -1,0 +1,367 @@
+{
+  "chapter": 6,
+  "title": "Chương 6 - Tầng vật lý",
+  "total_questions": 30,
+  "questions": [
+    {
+      "id": 1,
+      "question": "Tầng vật lý trong mô hình mạng có chức năng chính là gì?",
+      "options": {
+        "A": "Định tuyến gói tin giữa các mạng",
+        "B": "Truyền các bit trên môi trường truyền dẫn",
+        "C": "Phân giải tên miền",
+        "D": "Quản lý cổng ứng dụng"
+      },
+      "correct_answer": "B",
+      "explanation": "Tầng vật lý chịu trách nhiệm truyền các bit 0 và 1 qua môi trường truyền dẫn."
+    },
+    {
+      "id": 2,
+      "question": "Đơn vị dữ liệu ở tầng vật lý là gì?",
+      "options": {
+        "A": "Packet",
+        "B": "Frame",
+        "C": "Bit",
+        "D": "Segment"
+      },
+      "correct_answer": "C",
+      "explanation": "Ở tầng vật lý, dữ liệu được biểu diễn và truyền dưới dạng bit."
+    },
+    {
+      "id": 3,
+      "question": "Thiết bị nào hoạt động chủ yếu ở tầng vật lý?",
+      "options": {
+        "A": "Router",
+        "B": "Switch",
+        "C": "Bridge",
+        "D": "Hub"
+      },
+      "correct_answer": "D",
+      "explanation": "Hub là thiết bị tầng vật lý, phát tín hiệu đến جميع các cổng mà không xử lý địa chỉ."
+    },
+    {
+      "id": 4,
+      "question": "Modem là thiết bị hoạt động chủ yếu ở tầng nào?",
+      "options": {
+        "A": "Tầng vật lý",
+        "B": "Tầng mạng",
+        "C": "Tầng ứng dụng",
+        "D": "Tầng giao vận"
+      },
+      "correct_answer": "A",
+      "explanation": "Modem thực hiện biến đổi tín hiệu để truyền trên môi trường vật lý nên chủ yếu thuộc tầng vật lý."
+    },
+    {
+      "id": 5,
+      "question": "Tên gọi đầy đủ của modem là gì?",
+      "options": {
+        "A": "Modify-Demonstrate",
+        "B": "Model-Debug",
+        "C": "Modulator-Demodulator",
+        "D": "Mode-Decoder"
+      },
+      "correct_answer": "C",
+      "explanation": "Modem là viết tắt của Modulator-Demodulator, tức là điều chế và giải điều chế."
+    },
+    {
+      "id": 6,
+      "question": "Nhiệm vụ cơ bản của modem là gì?",
+      "options": {
+        "A": "Định tuyến gói IP",
+        "B": "Chuyển đổi giữa tín hiệu số và tín hiệu tương tự",
+        "C": "Phân giải địa chỉ MAC",
+        "D": "Gửi email"
+      },
+      "correct_answer": "B",
+      "explanation": "Modem dùng để biến đổi tín hiệu số thành tín hiệu phù hợp với đường truyền và ngược lại."
+    },
+    {
+      "id": 7,
+      "question": "Môi trường truyền dẫn có dây nào phổ biến trong mạng máy tính?",
+      "options": {
+        "A": "Cáp xoắn đôi",
+        "B": "Không khí",
+        "C": "Chân không",
+        "D": "Sóng âm"
+      },
+      "correct_answer": "A",
+      "explanation": "Cáp xoắn đôi là môi trường truyền dẫn có dây rất phổ biến trong mạng LAN."
+    },
+    {
+      "id": 8,
+      "question": "Môi trường truyền dẫn nào sau đây là không dây?",
+      "options": {
+        "A": "Cáp quang",
+        "B": "Cáp đồng trục",
+        "C": "Sóng vô tuyến",
+        "D": "Cáp xoắn đôi"
+      },
+      "correct_answer": "C",
+      "explanation": "Sóng vô tuyến là môi trường truyền dẫn không dây."
+    },
+    {
+      "id": 9,
+      "question": "Cáp quang truyền dữ liệu chủ yếu bằng gì?",
+      "options": {
+        "A": "Dòng điện",
+        "B": "Ánh sáng",
+        "C": "Sóng âm",
+        "D": "Từ trường tĩnh"
+      },
+      "correct_answer": "B",
+      "explanation": "Cáp quang truyền tín hiệu bằng ánh sáng nên có băng thông cao và chống nhiễu tốt."
+    },
+    {
+      "id": 10,
+      "question": "Ưu điểm nổi bật của cáp quang là gì?",
+      "options": {
+        "A": "Dễ bị nhiễu điện từ",
+        "B": "Băng thông cao và truyền xa tốt",
+        "C": "Giá luôn rẻ nhất",
+        "D": "Chỉ dùng cho mạng rất nhỏ"
+      },
+      "correct_answer": "B",
+      "explanation": "Cáp quang có tốc độ cao, băng thông lớn và ít bị ảnh hưởng bởi nhiễu điện từ."
+    },
+    {
+      "id": 11,
+      "question": "Loại cáp nào thường được dùng phổ biến trong mạng LAN hiện nay?",
+      "options": {
+        "A": "Cáp xoắn đôi",
+        "B": "Cáp điện thoại analog cũ",
+        "C": "Cáp đồng trục dày",
+        "D": "Cáp âm thanh"
+      },
+      "correct_answer": "A",
+      "explanation": "Trong mạng LAN hiện nay, cáp xoắn đôi là loại phổ biến nhất."
+    },
+    {
+      "id": 12,
+      "question": "Tầng vật lý quan tâm trực tiếp đến yếu tố nào?",
+      "options": {
+        "A": "Địa chỉ IP",
+        "B": "Cấu trúc khung dữ liệu logic",
+        "C": "Biểu diễn tín hiệu và môi trường truyền",
+        "D": "Tên miền"
+      },
+      "correct_answer": "C",
+      "explanation": "Tầng vật lý xử lý cách bit được biểu diễn thành tín hiệu và truyền qua môi trường."
+    },
+    {
+      "id": 13,
+      "question": "Sự suy giảm cường độ tín hiệu theo khoảng cách được gọi là gì?",
+      "options": {
+        "A": "Nhiễu",
+        "B": "Suy hao",
+        "C": "Méo xung",
+        "D": "Phản xạ"
+      },
+      "correct_answer": "B",
+      "explanation": "Suy hao là hiện tượng tín hiệu yếu dần khi truyền đi xa."
+    },
+    {
+      "id": 14,
+      "question": "Nguyên nhân nào sau đây là một dạng làm sai lệch tín hiệu?",
+      "options": {
+        "A": "Suy hao",
+        "B": "Nhiễu",
+        "C": "Méo dạng",
+        "D": "Cả A, B, C"
+      },
+      "correct_answer": "D",
+      "explanation": "Ba nguyên nhân cơ bản gây sai lệch tín hiệu là suy hao, nhiễu và méo dạng."
+    },
+    {
+      "id": 15,
+      "question": "Nhiễu trong truyền dẫn dữ liệu là gì?",
+      "options": {
+        "A": "Tín hiệu không mong muốn làm ảnh hưởng đến tín hiệu gốc",
+        "B": "Địa chỉ IP bị trùng",
+        "C": "Lỗi định tuyến",
+        "D": "Sai cổng ứng dụng"
+      },
+      "correct_answer": "A",
+      "explanation": "Nhiễu là tín hiệu ngoài ý muốn chen vào, làm tín hiệu thu bị sai lệch."
+    },
+    {
+      "id": 16,
+      "question": "Băng thông của đường truyền thường thể hiện điều gì?",
+      "options": {
+        "A": "Dung lượng ổ cứng",
+        "B": "Khả năng truyền dữ liệu của kênh truyền",
+        "C": "Số lượng router",
+        "D": "Số địa chỉ MAC"
+      },
+      "correct_answer": "B",
+      "explanation": "Băng thông thể hiện khả năng tải dữ liệu của đường truyền trong một đơn vị thời gian."
+    },
+    {
+      "id": 17,
+      "question": "Đơn vị thường dùng để đo tốc độ truyền dữ liệu ở tầng vật lý là gì?",
+      "options": {
+        "A": "bit trên giây",
+        "B": "byte trên mét",
+        "C": "frame trên giây",
+        "D": "packet trên giờ"
+      },
+      "correct_answer": "A",
+      "explanation": "Tốc độ truyền dữ liệu vật lý thường được đo bằng bps, kbps, Mbps hoặc Gbps."
+    },
+    {
+      "id": 18,
+      "question": "Tín hiệu số có đặc điểm nào?",
+      "options": {
+        "A": "Biến đổi liên tục theo thời gian",
+        "B": "Chỉ biểu diễn bằng các mức rời rạc",
+        "C": "Không thể dùng trong mạng máy tính",
+        "D": "Luôn là ánh sáng"
+      },
+      "correct_answer": "B",
+      "explanation": "Tín hiệu số thường có các mức rời rạc, ví dụ hai mức biểu diễn 0 và 1."
+    },
+    {
+      "id": 19,
+      "question": "Tín hiệu tương tự có đặc điểm nào?",
+      "options": {
+        "A": "Chỉ có hai mức 0 và 1",
+        "B": "Biến thiên liên tục theo thời gian",
+        "C": "Không thể truyền qua dây dẫn",
+        "D": "Chỉ xuất hiện trong IPv6"
+      },
+      "correct_answer": "B",
+      "explanation": "Tín hiệu tương tự thay đổi liên tục, khác với tín hiệu số dạng rời rạc."
+    },
+    {
+      "id": 20,
+      "question": "Quá trình biến đổi dữ liệu số thành tín hiệu phù hợp với đường truyền được gọi là gì?",
+      "options": {
+        "A": "Định tuyến",
+        "B": "Mã hóa địa chỉ",
+        "C": "Điều chế",
+        "D": "Phân mảnh"
+      },
+      "correct_answer": "C",
+      "explanation": "Điều chế là quá trình biến đổi tín hiệu để phù hợp với môi trường truyền dẫn."
+    },
+    {
+      "id": 21,
+      "question": "Sóng viba là gì?",
+      "options": {
+        "A": "Một loại sóng điện từ tần số cao dùng trong truyền thông vô tuyến",
+        "B": "Một loại dây cáp đồng",
+        "C": "Một giao thức mạng",
+        "D": "Một dạng địa chỉ IP"
+      },
+      "correct_answer": "A",
+      "explanation": "Sóng viba là sóng điện từ tần số cao, dùng trong liên lạc vô tuyến, vệ tinh, radar."
+    },
+    {
+      "id": 22,
+      "question": "Ưu điểm của truyền dẫn không dây là gì?",
+      "options": {
+        "A": "Luôn ổn định hơn cáp quang",
+        "B": "Không bị ảnh hưởng bởi môi trường",
+        "C": "Dễ triển khai và linh hoạt di chuyển",
+        "D": "Không bao giờ bị nhiễu"
+      },
+      "correct_answer": "C",
+      "explanation": "Truyền không dây linh hoạt, tiện triển khai, nhất là khi khó kéo cáp."
+    },
+    {
+      "id": 23,
+      "question": "Nhược điểm thường gặp của môi trường truyền không dây là gì?",
+      "options": {
+        "A": "Không truyền được dữ liệu",
+        "B": "Dễ bị nhiễu và suy giảm tín hiệu hơn",
+        "C": "Không cần thiết bị thu phát",
+        "D": "Không dùng sóng điện từ"
+      },
+      "correct_answer": "B",
+      "explanation": "Môi trường không dây thường dễ bị ảnh hưởng bởi vật cản, nhiễu và khoảng cách."
+    },
+    {
+      "id": 24,
+      "question": "Repeater là thiết bị dùng để làm gì?",
+      "options": {
+        "A": "Khuếch đại hoặc tái tạo tín hiệu để truyền xa hơn",
+        "B": "Định tuyến giữa hai mạng",
+        "C": "Cấp phát địa chỉ IP",
+        "D": "Mã hóa trang web"
+      },
+      "correct_answer": "A",
+      "explanation": "Repeater giúp tín hiệu đi xa hơn bằng cách khuếch đại hoặc tái tạo lại tín hiệu."
+    },
+    {
+      "id": 25,
+      "question": "Một nhiệm vụ của tầng vật lý là quy định gì?",
+      "options": {
+        "A": "Cách ánh xạ bit thành tín hiệu",
+        "B": "Cách chọn đường đi cho gói tin",
+        "C": "Cách gán port cho ứng dụng",
+        "D": "Cách gửi email"
+      },
+      "correct_answer": "A",
+      "explanation": "Tầng vật lý quy định cách bit được biểu diễn thành tín hiệu điện, quang hoặc vô tuyến."
+    },
+    {
+      "id": 26,
+      "question": "Phát biểu nào đúng về hub?",
+      "options": {
+        "A": "Hub đọc địa chỉ MAC rồi chọn đúng cổng đích",
+        "B": "Hub hoạt động như thiết bị tầng vật lý và phát tín hiệu ra nhiều cổng",
+        "C": "Hub là thiết bị định tuyến",
+        "D": "Hub chỉ dùng cho IPv6"
+      },
+      "correct_answer": "B",
+      "explanation": "Hub không xử lý frame thông minh như switch mà chỉ phát tín hiệu đến các cổng."
+    },
+    {
+      "id": 27,
+      "question": "Tầng vật lý trong mô hình OSI nằm ở vị trí nào?",
+      "options": {
+        "A": "Tầng dưới cùng",
+        "B": "Tầng trên cùng",
+        "C": "Nằm giữa tầng mạng và tầng giao vận",
+        "D": "Nằm trên tầng ứng dụng"
+      },
+      "correct_answer": "A",
+      "explanation": "Tầng vật lý là tầng thấp nhất trong mô hình OSI."
+    },
+    {
+      "id": 28,
+      "question": "Yếu tố nào ảnh hưởng trực tiếp đến chất lượng truyền dẫn ở tầng vật lý?",
+      "options": {
+        "A": "Chiều dài đường truyền",
+        "B": "Nhiễu điện từ",
+        "C": "Chất lượng môi trường truyền",
+        "D": "Cả A, B, C"
+      },
+      "correct_answer": "D",
+      "explanation": "Chất lượng tín hiệu phụ thuộc vào khoảng cách, nhiễu và đặc tính môi trường truyền."
+    },
+    {
+      "id": 29,
+      "question": "Nếu xét riêng theo mô hình phân tầng, tầng vật lý không trực tiếp xử lý nội dung nào sau đây?",
+      "options": {
+        "A": "Địa chỉ IP",
+        "B": "Mức điện áp tín hiệu",
+        "C": "Dạng sóng truyền",
+        "D": "Đầu nối và môi trường truyền"
+      },
+      "correct_answer": "A",
+      "explanation": "Địa chỉ IP thuộc tầng mạng, không phải chức năng trực tiếp của tầng vật lý."
+    },
+    {
+      "id": 30,
+      "question": "Kết luận nào sau đây đúng nhất về tầng vật lý?",
+      "options": {
+        "A": "Tầng vật lý phụ trách địa chỉ MAC và frame",
+        "B": "Tầng vật lý phụ trách truyền bit, tín hiệu, môi trường truyền và các đặc tính phần cứng",
+        "C": "Tầng vật lý dùng để gửi thư điện tử",
+        "D": "Tầng vật lý là tầng định tuyến"
+      },
+      "correct_answer": "B",
+      "explanation": "Tầng vật lý gắn với bit, tín hiệu, đầu nối, cáp, sóng và các đặc tính truyền dẫn."
+    }
+  ]
+}
