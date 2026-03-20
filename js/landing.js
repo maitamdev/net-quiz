@@ -49,7 +49,7 @@ export function renderLanding(container) {
           </div>
           </div>
           <div class="hero-image">
-            <img src="/images/author.jpg" alt="Tác giả" class="hero-author-img" />
+            <img src="/images/1000068108.jpg" alt="Tác giả" class="hero-author-img" />
           </div>
         </div>
       </section>
