@@ -68,7 +68,7 @@ export async function renderExam(container) {
 
     let correct = 0;
     examQuestions.forEach((q, i) => {
-      if (state.answers[i] === q.correct) correct++;
+      if (state.answers[i] !== null && state.answers[i] === q.correct) correct++;
     });
 
     const timeSpent = EXAM_TIME - state.timeLeft;
