@@ -1,0 +1,367 @@
+{
+  "chapter": 2,
+  "title": "Chương 2 - Tầng ứng dụng",
+  "total_questions": 30,
+  "questions": [
+    {
+      "id": 1,
+      "question": "Tầng ứng dụng trong mô hình TCP/IP có chức năng chính là gì?",
+      "options": {
+        "A": "Truyền bit trên đường truyền",
+        "B": "Cung cấp dịch vụ mạng trực tiếp cho người dùng và chương trình ứng dụng",
+        "C": "Định tuyến gói tin",
+        "D": "Kiểm tra tín hiệu điện"
+      },
+      "correct_answer": "B",
+      "explanation": "Tầng ứng dụng là nơi các chương trình như web, email, truyền file sử dụng để giao tiếp qua mạng."
+    },
+    {
+      "id": 2,
+      "question": "Giao thức nào thường dùng để truy cập trang web?",
+      "options": {
+        "A": "FTP",
+        "B": "HTTP",
+        "C": "ARP",
+        "D": "ICMP"
+      },
+      "correct_answer": "B",
+      "explanation": "HTTP là giao thức phổ biến dùng để trao đổi dữ liệu giữa trình duyệt và máy chủ web."
+    },
+    {
+      "id": 3,
+      "question": "HTTPS khác HTTP chủ yếu ở điểm nào?",
+      "options": {
+        "A": "HTTPS truyền chậm hơn nên ít dùng",
+        "B": "HTTPS không dùng Internet",
+        "C": "HTTPS có mã hóa SSL/TLS, HTTP thì không",
+        "D": "HTTP chỉ dùng cho điện thoại"
+      },
+      "correct_answer": "C",
+      "explanation": "HTTPS giúp mã hóa dữ liệu truyền giữa client và server, tăng bảo mật."
+    },
+    {
+      "id": 4,
+      "question": "Thông điệp HTTP Request thường gồm mấy phần chính?",
+      "options": {
+        "A": "2 phần",
+        "B": "3 phần",
+        "C": "4 phần",
+        "D": "5 phần"
+      },
+      "correct_answer": "B",
+      "explanation": "HTTP Request gồm dòng yêu cầu, phần header và phần body."
+    },
+    {
+      "id": 5,
+      "question": "Trong HTTP Request, phần body thường chứa gì?",
+      "options": {
+        "A": "Địa chỉ IP của router",
+        "B": "Dữ liệu client gửi lên server",
+        "C": "Mã lỗi vật lý",
+        "D": "Địa chỉ MAC của switch"
+      },
+      "correct_answer": "B",
+      "explanation": "Body thường chứa dữ liệu biểu mẫu, JSON, XML hoặc tệp được tải lên."
+    },
+    {
+      "id": 6,
+      "question": "Thông điệp HTTP Response thường gồm mấy phần chính?",
+      "options": {
+        "A": "1 phần",
+        "B": "2 phần",
+        "C": "3 phần",
+        "D": "4 phần"
+      },
+      "correct_answer": "C",
+      "explanation": "HTTP Response gồm dòng trạng thái, header và body."
+    },
+    {
+      "id": 7,
+      "question": "Mã trạng thái HTTP 200 cho biết điều gì?",
+      "options": {
+        "A": "Không tìm thấy tài nguyên",
+        "B": "Yêu cầu thành công",
+        "C": "Lỗi máy chủ",
+        "D": "Cần chuyển hướng"
+      },
+      "correct_answer": "B",
+      "explanation": "200 OK nghĩa là máy chủ đã xử lý yêu cầu thành công."
+    },
+    {
+      "id": 8,
+      "question": "Mã trạng thái HTTP 404 có ý nghĩa gì?",
+      "options": {
+        "A": "Yêu cầu thành công",
+        "B": "Không có quyền truy cập",
+        "C": "Không tìm thấy tài nguyên",
+        "D": "Máy chủ ngừng hoạt động vĩnh viễn"
+      },
+      "correct_answer": "C",
+      "explanation": "404 Not Found là lỗi phổ biến khi tài nguyên không tồn tại hoặc không tìm thấy."
+    },
+    {
+      "id": 9,
+      "question": "Phương thức HTTP nào thường dùng để lấy dữ liệu từ server?",
+      "options": {
+        "A": "POST",
+        "B": "GET",
+        "C": "PUT",
+        "D": "DELETE"
+      },
+      "correct_answer": "B",
+      "explanation": "GET thường dùng để yêu cầu server gửi dữ liệu về cho client."
+    },
+    {
+      "id": 10,
+      "question": "Phương thức HTTP nào thường dùng để gửi dữ liệu từ client lên server?",
+      "options": {
+        "A": "GET",
+        "B": "TRACE",
+        "C": "POST",
+        "D": "HEAD"
+      },
+      "correct_answer": "C",
+      "explanation": "POST thường dùng để gửi dữ liệu biểu mẫu hoặc thông tin lên máy chủ."
+    },
+    {
+      "id": 11,
+      "question": "FTP là giao thức dùng để làm gì?",
+      "options": {
+        "A": "Phân giải tên miền",
+        "B": "Truyền tệp",
+        "C": "Gửi thư điện tử",
+        "D": "Cấp phát IP"
+      },
+      "correct_answer": "B",
+      "explanation": "FTP là giao thức truyền tệp giữa client và server."
+    },
+    {
+      "id": 12,
+      "question": "FTP sử dụng giao thức tầng dưới nào để truyền dữ liệu?",
+      "options": {
+        "A": "UDP",
+        "B": "ARP",
+        "C": "TCP",
+        "D": "ICMP"
+      },
+      "correct_answer": "C",
+      "explanation": "FTP là giao thức hướng kết nối, hoạt động trên TCP."
+    },
+    {
+      "id": 13,
+      "question": "Giao thức trung tâm của hệ thống thư điện tử là gì?",
+      "options": {
+        "A": "SMTP",
+        "B": "HTTP",
+        "C": "ARP",
+        "D": "DHCP"
+      },
+      "correct_answer": "A",
+      "explanation": "SMTP chủ yếu dùng để gửi thư điện tử."
+    },
+    {
+      "id": 14,
+      "question": "Giao thức nào thường dùng để nhận thư điện tử từ mail server về máy người dùng trong dạng câu hỏi cơ bản?",
+      "options": {
+        "A": "SMTP",
+        "B": "POP3",
+        "C": "ARP",
+        "D": "RIP"
+      },
+      "correct_answer": "B",
+      "explanation": "Trong các câu hỏi nhập môn, POP3 thường được dùng làm đáp án cho giao thức nhận thư."
+    },
+    {
+      "id": 15,
+      "question": "IMAP là giao thức dùng để làm gì?",
+      "options": {
+        "A": "Gửi thư điện tử",
+        "B": "Nhận và quản lý thư điện tử trên máy chủ",
+        "C": "Truyền tệp",
+        "D": "Cấp phát địa chỉ IP"
+      },
+      "correct_answer": "B",
+      "explanation": "IMAP cho phép đọc và quản lý thư trực tiếp trên máy chủ."
+    },
+    {
+      "id": 16,
+      "question": "DNS là viết tắt của chức năng nào?",
+      "options": {
+        "A": "Hệ thống truyền dữ liệu số",
+        "B": "Hệ thống phân giải tên miền",
+        "C": "Hệ thống nén tệp",
+        "D": "Hệ thống định tuyến động"
+      },
+      "correct_answer": "B",
+      "explanation": "DNS dùng để chuyển tên miền thành địa chỉ IP."
+    },
+    {
+      "id": 17,
+      "question": "Chức năng chính của DNS là gì?",
+      "options": {
+        "A": "Chuyển tên miền thành địa chỉ IP",
+        "B": "Gửi thư điện tử",
+        "C": "Truyền file",
+        "D": "Mã hóa đường truyền vật lý"
+      },
+      "correct_answer": "A",
+      "explanation": "DNS giúp người dùng truy cập bằng tên dễ nhớ thay vì phải nhớ địa chỉ IP."
+    },
+    {
+      "id": 18,
+      "question": "Có thể thiết lập cấu hình DNS Server bằng mấy cách cơ bản?",
+      "options": {
+        "A": "1 cách",
+        "B": "2 cách",
+        "C": "3 cách",
+        "D": "5 cách"
+      },
+      "correct_answer": "B",
+      "explanation": "Thông thường có cấu hình thủ công hoặc nhận tự động qua DHCP."
+    },
+    {
+      "id": 19,
+      "question": "DHCP là giao thức dùng để làm gì?",
+      "options": {
+        "A": "Cấp phát địa chỉ IP tự động",
+        "B": "Gửi email",
+        "C": "Phân giải tên miền",
+        "D": "Truyền video trực tuyến"
+      },
+      "correct_answer": "A",
+      "explanation": "DHCP giúp cấp phát IP, gateway, DNS và các thông số mạng tự động."
+    },
+    {
+      "id": 20,
+      "question": "Telnet là giao thức dùng để làm gì?",
+      "options": {
+        "A": "Đăng nhập điều khiển từ xa",
+        "B": "Truyền ảnh",
+        "C": "Cấp phát IP",
+        "D": "Định tuyến"
+      },
+      "correct_answer": "A",
+      "explanation": "Telnet cho phép đăng nhập và điều khiển máy từ xa nhưng không mã hóa."
+    },
+    {
+      "id": 21,
+      "question": "Giao thức nào an toàn hơn Telnet khi truy cập từ xa?",
+      "options": {
+        "A": "FTP",
+        "B": "SMTP",
+        "C": "SSH",
+        "D": "ARP"
+      },
+      "correct_answer": "C",
+      "explanation": "SSH là giao thức truy cập từ xa có mã hóa, an toàn hơn Telnet."
+    },
+    {
+      "id": 22,
+      "question": "Mô hình client-server ở tầng ứng dụng là gì?",
+      "options": {
+        "A": "Mọi máy đều không phân vai",
+        "B": "Một bên yêu cầu dịch vụ, một bên cung cấp dịch vụ",
+        "C": "Chỉ có router làm việc",
+        "D": "Không có kết nối mạng"
+      },
+      "correct_answer": "B",
+      "explanation": "Client gửi yêu cầu, server tiếp nhận và trả lời."
+    },
+    {
+      "id": 23,
+      "question": "Trình duyệt web là ví dụ của thành phần nào trong mô hình client-server?",
+      "options": {
+        "A": "Client",
+        "B": "Server",
+        "C": "Router",
+        "D": "Gateway"
+      },
+      "correct_answer": "A",
+      "explanation": "Trình duyệt gửi yêu cầu đến web server nên nó là client."
+    },
+    {
+      "id": 24,
+      "question": "Máy chủ web là ví dụ của thành phần nào trong mô hình client-server?",
+      "options": {
+        "A": "Client",
+        "B": "Server",
+        "C": "Hub",
+        "D": "Repeater"
+      },
+      "correct_answer": "B",
+      "explanation": "Máy chủ web cung cấp nội dung và dịch vụ cho trình duyệt."
+    },
+    {
+      "id": 25,
+      "question": "URL dùng để làm gì?",
+      "options": {
+        "A": "Xác định địa chỉ tài nguyên trên web",
+        "B": "Lưu mật khẩu người dùng",
+        "C": "Tăng tốc độ Internet",
+        "D": "Đổi địa chỉ MAC"
+      },
+      "correct_answer": "A",
+      "explanation": "URL là địa chỉ dùng để xác định vị trí tài nguyên trên web."
+    },
+    {
+      "id": 26,
+      "question": "Tên miền là gì?",
+      "options": {
+        "A": "Tên dễ nhớ đại diện cho địa chỉ IP",
+        "B": "Tên của card mạng",
+        "C": "Tên người quản trị mạng",
+        "D": "Mã số của router"
+      },
+      "correct_answer": "A",
+      "explanation": "Tên miền giúp người dùng nhớ và truy cập dịch vụ mạng dễ hơn."
+    },
+    {
+      "id": 27,
+      "question": "Cookie trong web thường dùng để làm gì?",
+      "options": {
+        "A": "Lưu một số thông tin phiên làm việc của người dùng",
+        "B": "Tăng điện áp đường truyền",
+        "C": "Thay đổi địa chỉ IP của router",
+        "D": "Nén file ảnh vật lý"
+      },
+      "correct_answer": "A",
+      "explanation": "Cookie thường dùng để lưu trạng thái đăng nhập hoặc tùy chọn người dùng."
+    },
+    {
+      "id": 28,
+      "question": "Web tĩnh là gì?",
+      "options": {
+        "A": "Trang web có nội dung cố định, ít thay đổi",
+        "B": "Trang web không có máy chủ",
+        "C": "Trang web không dùng Internet",
+        "D": "Trang web chỉ chạy bằng UDP"
+      },
+      "correct_answer": "A",
+      "explanation": "Web tĩnh thường chứa nội dung cố định, server gửi lại gần như nguyên nội dung đã lưu."
+    },
+    {
+      "id": 29,
+      "question": "Web động là gì?",
+      "options": {
+        "A": "Trang web tự thay đổi nội dung theo yêu cầu hoặc dữ liệu",
+        "B": "Trang web không có người dùng",
+        "C": "Trang web không cần server",
+        "D": "Trang web chỉ chứa hình ảnh"
+      },
+      "correct_answer": "A",
+      "explanation": "Web động tạo nội dung tùy theo người dùng, dữ liệu hoặc yêu cầu gửi đến."
+    },
+    {
+      "id": 30,
+      "question": "Khi gõ tên miền vào trình duyệt, bước nào thường xảy ra trước để truy cập website?",
+      "options": {
+        "A": "DNS phân giải tên miền thành địa chỉ IP",
+        "B": "Máy tính tự động đổi địa chỉ MAC",
+        "C": "Switch tạo trang web",
+        "D": "Hub cấp phát tên miền"
+      },
+      "correct_answer": "A",
+      "explanation": "Trước khi truy cập web server, tên miền thường được DNS phân giải thành địa chỉ IP."
+    }
+  ]
+}
