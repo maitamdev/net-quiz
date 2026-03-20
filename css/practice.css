@@ -29,7 +29,7 @@
 .practice-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: var(--space-6);
+  gap: var(--space-8);
   max-width: 900px;
   margin: 0 auto;
 }
