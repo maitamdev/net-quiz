@@ -19,13 +19,37 @@ export async function renderQuiz(container, params = {}) {
   const quizQuestions = allQuestions;
 
   const totalQ = quizQuestions.length;
+  const storageKey = `nq_quiz_${params.chapter || 'all'}`;
+
+  // Restore saved state if exists
+  let saved = null;
+  try {
+    const raw = localStorage.getItem(storageKey);
+    if (raw) saved = JSON.parse(raw);
+  } catch (e) { /* ignore */ }
+
   const state = {
-    current: 0,
-    answers: new Array(totalQ).fill(null),
-    flagged: new Set(),
+    current: saved?.current || 0,
+    answers: saved?.answers || new Array(totalQ).fill(null),
+    flagged: new Set(saved?.flagged || []),
     showExplanation: false,
-    startTime: Date.now(),
+    startTime: saved?.startTime || Date.now(),
   };
+
+  function saveState() {
+    try {
+      localStorage.setItem(storageKey, JSON.stringify({
+        current: state.current,
+        answers: state.answers,
+        flagged: [...state.flagged],
+        startTime: state.startTime,
+      }));
+    } catch (e) { /* ignore */ }
+  }
+
+  function clearState() {
+    localStorage.removeItem(storageKey);
+  }
 
   function render() {
     const q = quizQuestions[state.current];
@@ -167,6 +191,8 @@ export async function renderQuiz(container, params = {}) {
         // Update nav item
         const navItem = container.querySelector(`#qnav-${state.current}`);
         if (navItem) navItem.classList.add('answered');
+
+        saveState();
       });
     });
 
@@ -175,6 +201,7 @@ export async function renderQuiz(container, params = {}) {
       item.addEventListener('click', () => {
         state.current = parseInt(item.dataset.index);
         state.showExplanation = false;
+        saveState();
         render();
       });
     });
@@ -186,6 +213,7 @@ export async function renderQuiz(container, params = {}) {
       } else {
         state.flagged.add(state.current);
       }
+      saveState();
       render();
     });
 
@@ -194,6 +222,7 @@ export async function renderQuiz(container, params = {}) {
       if (state.current < totalQ - 1) {
         state.current++;
         state.showExplanation = false;
+        saveState();
         render();
       }
     });
@@ -202,6 +231,7 @@ export async function renderQuiz(container, params = {}) {
       if (state.current > 0) {
         state.current--;
         state.showExplanation = false;
+        saveState();
         render();
       }
     });
@@ -229,6 +259,8 @@ export async function renderQuiz(container, params = {}) {
         mode: 'practice',
         chapterId: params.chapter ? parseInt(params.chapter) : null,
       });
+
+      clearState();
 
       window.location.hash = `/results?correct=${correct}&total=${totalQ}&time=${elapsed}`;
     });
