@@ -16,24 +16,33 @@ export async function renderQuiz(container, params = {}) {
     allQuestions = await fetchQuestions();
   }
 
-  const quizQuestions = allQuestions;
-
-  const totalQ = quizQuestions.length;
+  // Shuffle questions for new session, preserve order if resuming
   const storageKey = `nq_quiz_${params.chapter || 'all'}`;
-
-  // Restore saved state if exists
-  let saved = null;
+  let savedRaw = null;
   try {
     const raw = localStorage.getItem(storageKey);
-    if (raw) saved = JSON.parse(raw);
+    if (raw) savedRaw = JSON.parse(raw);
   } catch (e) { /* ignore */ }
 
+  let quizQuestions;
+  if (savedRaw?.questionIds) {
+    // Restore saved question order
+    const idMap = {};
+    allQuestions.forEach(q => idMap[q.id] = q);
+    quizQuestions = savedRaw.questionIds.map(id => idMap[id]).filter(Boolean);
+  } else {
+    // New session: shuffle
+    quizQuestions = [...allQuestions].sort(() => Math.random() - 0.5);
+  }
+
+  const totalQ = quizQuestions.length;
+
   const state = {
-    current: saved?.current || 0,
-    answers: saved?.answers || new Array(totalQ).fill(null),
-    flagged: new Set(saved?.flagged || []),
+    current: savedRaw?.current || 0,
+    answers: savedRaw?.answers || new Array(totalQ).fill(null),
+    flagged: new Set(savedRaw?.flagged || []),
     showExplanation: false,
-    startTime: saved?.startTime || Date.now(),
+    startTime: savedRaw?.startTime || Date.now(),
   };
 
   function saveState() {
@@ -43,6 +52,7 @@ export async function renderQuiz(container, params = {}) {
         answers: state.answers,
         flagged: [...state.flagged],
         startTime: state.startTime,
+        questionIds: quizQuestions.map(q => q.id),
       }));
     } catch (e) { /* ignore */ }
   }
