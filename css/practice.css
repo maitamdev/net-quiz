@@ -1,5 +1,5 @@
 /* ========================================
-   Practice Mode Selection Page
+   Practice Mode - Course Card Style
    ======================================== */
 
 .practice-page {
@@ -25,194 +25,134 @@
   margin: 0 auto;
 }
 
-/* === Square Tile Grid === */
+/* === Card Grid === */
 .practice-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: var(--space-4);
-  max-width: 720px;
+  gap: var(--space-6);
+  max-width: 960px;
   margin: 0 auto;
 }
 
-.practice-tile {
-  aspect-ratio: 1;
+/* === Course Card === */
+.course-card {
   background: var(--bg-card);
   border: 1px solid var(--border-primary);
   border-radius: var(--radius-2xl);
-  padding: var(--space-6);
+  overflow: hidden;
   cursor: pointer;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   display: flex;
   flex-direction: column;
+}
+
+.course-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.25);
+  border-color: var(--border-hover);
+}
+
+.course-card:active {
+  transform: translateY(-2px);
+}
+
+/* Banner */
+.course-card-banner {
+  height: 120px;
+  position: relative;
+  display: flex;
   align-items: center;
   justify-content: center;
-  gap: var(--space-3);
-  text-align: center;
-  transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
-  position: relative;
   overflow: hidden;
 }
 
-.practice-tile::before {
-  content: '';
+.course-card-emoji {
+  font-size: 48px;
+  filter: drop-shadow(0 4px 12px rgba(0,0,0,0.2));
+  transition: transform 0.3s;
+}
+
+.course-card:hover .course-card-emoji {
+  transform: scale(1.15) rotate(-5deg);
+}
+
+.course-card-badge {
   position: absolute;
-  inset: 0;
-  border-radius: inherit;
-  opacity: 0;
-  transition: opacity 0.25s;
-}
-
-.practice-tile:hover {
-  transform: translateY(-4px);
-  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.3);
-  border-color: var(--border-hover);
-}
-
-.practice-tile:hover::before {
-  opacity: 1;
-}
-
-.practice-tile:active {
-  transform: translateY(-2px) scale(0.98);
-}
-
-/* Tile Icon */
-.tile-icon {
-  width: 56px;
-  height: 56px;
-  border-radius: var(--radius-xl);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  transition: transform 0.25s;
-}
-
-.practice-tile:hover .tile-icon {
-  transform: scale(1.15);
-}
-
-/* Tile Text */
-.tile-title {
-  font-size: var(--text-sm);
-  font-weight: 700;
-  line-height: 1.3;
-}
-
-.tile-subtitle {
+  top: 10px;
+  left: 10px;
+  background: rgba(0, 0, 0, 0.35);
+  backdrop-filter: blur(8px);
+  color: white;
   font-size: 11px;
-  color: var(--text-tertiary);
-  line-height: 1.3;
+  font-weight: 600;
+  padding: 3px 10px;
+  border-radius: 20px;
+  letter-spacing: 0.3px;
 }
 
-/* === Color Variants === */
-.tile-indigo .tile-icon {
-  background: linear-gradient(135deg, rgba(99, 102, 241, 0.25), rgba(99, 102, 241, 0.08));
-  color: var(--indigo-400);
-}
-.tile-indigo:hover { border-color: rgba(99, 102, 241, 0.4); }
-.tile-indigo::before { background: linear-gradient(135deg, rgba(99, 102, 241, 0.06), transparent); }
-
-.tile-cyan .tile-icon {
-  background: linear-gradient(135deg, rgba(6, 182, 212, 0.25), rgba(6, 182, 212, 0.08));
-  color: var(--cyan-400);
-}
-.tile-cyan:hover { border-color: rgba(6, 182, 212, 0.4); }
-.tile-cyan::before { background: linear-gradient(135deg, rgba(6, 182, 212, 0.06), transparent); }
-
-.tile-purple .tile-icon {
-  background: linear-gradient(135deg, rgba(168, 85, 247, 0.25), rgba(168, 85, 247, 0.08));
-  color: var(--purple-400);
-}
-.tile-purple:hover { border-color: rgba(168, 85, 247, 0.4); }
-.tile-purple::before { background: linear-gradient(135deg, rgba(168, 85, 247, 0.06), transparent); }
-
-.tile-green .tile-icon {
-  background: linear-gradient(135deg, rgba(34, 197, 94, 0.25), rgba(34, 197, 94, 0.08));
-  color: #22c55e;
-}
-.tile-green:hover { border-color: rgba(34, 197, 94, 0.4); }
-.tile-green::before { background: linear-gradient(135deg, rgba(34, 197, 94, 0.06), transparent); }
-
-.tile-orange .tile-icon {
-  background: linear-gradient(135deg, rgba(249, 115, 22, 0.25), rgba(249, 115, 22, 0.08));
-  color: #f97316;
-}
-.tile-orange:hover { border-color: rgba(249, 115, 22, 0.4); }
-.tile-orange::before { background: linear-gradient(135deg, rgba(249, 115, 22, 0.06), transparent); }
-
-.tile-pink .tile-icon {
-  background: linear-gradient(135deg, rgba(244, 114, 182, 0.25), rgba(244, 114, 182, 0.08));
-  color: var(--pink-400);
-}
-.tile-pink:hover { border-color: rgba(244, 114, 182, 0.4); }
-.tile-pink::before { background: linear-gradient(135deg, rgba(244, 114, 182, 0.06), transparent); }
-
-.tile-emerald .tile-icon {
-  background: linear-gradient(135deg, rgba(16, 185, 129, 0.25), rgba(16, 185, 129, 0.08));
-  color: #10b981;
-}
-.tile-emerald:hover { border-color: rgba(16, 185, 129, 0.4); }
-.tile-emerald::before { background: linear-gradient(135deg, rgba(16, 185, 129, 0.06), transparent); }
-
-/* === Chapter List === */
-.chapter-list {
-  max-width: 700px;
-  margin: 0 auto;
+/* Body */
+.course-card-body {
+  padding: var(--space-4) var(--space-5) var(--space-5);
   display: flex;
   flex-direction: column;
-  gap: var(--space-3);
+  flex: 1;
 }
 
-.chapter-item {
+.course-card-title {
+  font-size: var(--text-base);
+  font-weight: 700;
+  margin-bottom: var(--space-2);
+  line-height: 1.3;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.course-card-desc {
+  font-size: 12px;
+  color: var(--text-tertiary);
+  line-height: 1.5;
+  margin-bottom: var(--space-4);
+  flex: 1;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+/* Footer */
+.course-card-footer {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: var(--space-4) var(--space-5);
-  background: var(--bg-card);
-  border: 1px solid var(--border-primary);
-  border-radius: var(--radius-xl);
-  cursor: pointer;
-  transition: all var(--transition-base);
+  padding-top: var(--space-3);
+  border-top: 1px solid var(--border-primary);
 }
 
-.chapter-item:hover {
-  border-color: var(--border-hover);
-  background: var(--bg-card-hover);
-  transform: translateX(4px);
-}
-
-.chapter-info {
-  display: flex;
-  align-items: center;
-  gap: var(--space-4);
-}
-
-.chapter-number {
-  width: 36px;
-  height: 36px;
-  border-radius: var(--radius-lg);
-  background: rgba(99, 102, 241, 0.12);
-  color: var(--indigo-400);
-  font-size: var(--text-sm);
-  font-weight: 700;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.chapter-name {
-  font-weight: 600;
-  font-size: var(--text-sm);
-}
-
-.chapter-count {
-  font-size: var(--text-xs);
-  color: var(--text-tertiary);
-}
-
-.chapter-progress {
+.course-card-stats {
   display: flex;
   align-items: center;
   gap: var(--space-3);
+}
+
+.course-card-stat {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  font-size: 12px;
+  color: var(--text-tertiary);
+}
+
+.course-card-action {
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--indigo-400);
+  transition: color 0.2s;
+}
+
+.course-card:hover .course-card-action {
+  color: var(--indigo-300);
 }
 
 /* === Back Button === */
@@ -237,36 +177,22 @@
 /* === Responsive === */
 @media (max-width: 768px) {
   .practice-grid {
-    grid-template-columns: repeat(3, 1fr);
-    gap: var(--space-3);
+    grid-template-columns: repeat(2, 1fr);
+    gap: var(--space-4);
   }
 
-  .practice-tile {
-    padding: var(--space-4);
-    gap: var(--space-2);
+  .course-card-banner {
+    height: 100px;
   }
 
-  .tile-icon {
-    width: 44px;
-    height: 44px;
-  }
-
-  .tile-icon svg {
-    width: 22px;
-    height: 22px;
-  }
-
-  .tile-title {
-    font-size: 12px;
-  }
-
-  .tile-subtitle {
-    font-size: 10px;
+  .course-card-emoji {
+    font-size: 36px;
   }
 }
 
 @media (max-width: 480px) {
   .practice-grid {
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: 1fr;
+    max-width: 340px;
   }
 }
