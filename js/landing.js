@@ -11,19 +11,17 @@ export function renderLanding(container) {
 
       <!-- Hero -->
       <section class="hero">
-        <div class="hero-content">
-          <div class="hero-badge">
-            <span class="hero-badge-dot"></span>
-            Nền tảng Luyện thi Mạng Máy Tính
-          </div>
-          <h1>
-            ÔN TẬP<br/>
-            <span class="hero-gradient-text">MẠNG MÁY TÍNH</span>
-          </h1>
-          <div class="hero-author">
-            <img src="/images/author.jpg" alt="Tác giả" class="hero-author-img" />
+        <div class="hero-layout">
+          <div class="hero-content">
+            <div class="hero-badge">
+              <span class="hero-badge-dot"></span>
+              Nền tảng Luyện thi Mạng Máy Tính
+            </div>
+            <h1>
+              ÔN TẬP<br/>
+              <span class="hero-gradient-text">MẠNG MÁY TÍNH</span>
+            </h1>
             <p>Trang web này được tạo ra để giúp các bạn ôn tập môn Mạng Máy Tính một cách hiệu quả nhất. Mọi bug hoặc thắc mắc vui lòng liên hệ <a href="mailto:maitamit062005@gmail.com" style="color: var(--indigo-400); text-decoration: underline;">maitamit062005@gmail.com</a>. Chúc bạn ôn tập và thi thật tốt! 🎉</p>
-          </div>
           <div class="hero-buttons">
             <a href="#/practice" class="btn btn-primary btn-lg hero-btn-glow" id="cta-start">
               <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="5 3 19 12 5 21 5 3"/></svg>
@@ -48,6 +46,10 @@ export function renderLanding(container) {
               <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
               <span>Giải thích bằng AI</span>
             </div>
+          </div>
+          </div>
+          <div class="hero-image">
+            <img src="/images/author.jpg" alt="Tác giả" class="hero-author-img" />
           </div>
         </div>
       </section>
