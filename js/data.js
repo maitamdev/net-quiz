@@ -127,11 +127,20 @@ export async function toggleBookmark(questionId) {
 }
 
 export async function fetchBookmarkedQuestions() {
-  const { data } = await supabase
+  const { data: bookmarks, error } = await supabase
     .from('bookmarks')
-    .select('question_id, questions(*)');
+    .select('question_id');
 
-  return (data || []).map(b => b.questions).filter(Boolean);
+  if (error) { console.error('Lỗi tải đánh dấu:', error); return []; }
+  if (!bookmarks || bookmarks.length === 0) return [];
+
+  const ids = bookmarks.map(b => b.question_id);
+  const { data: questions } = await supabase
+    .from('questions')
+    .select('*')
+    .in('id', ids);
+
+  return questions || [];
 }
 
 // Helper

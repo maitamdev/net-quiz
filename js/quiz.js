@@ -19,7 +19,7 @@ export async function renderQuiz(container, params = {}) {
   }
 
   // Shuffle questions for new session, preserve order if resuming
-  const storageKey = `nq_quiz_${params.chapter || 'all'}`;
+  const storageKey = `nq_quiz_${params.mode || params.chapter || 'all'}`;
   let savedRaw = null;
   try {
     const raw = localStorage.getItem(storageKey);
@@ -27,7 +27,10 @@ export async function renderQuiz(container, params = {}) {
   } catch (e) { /* ignore */ }
 
   let quizQuestions;
-  if (savedRaw?.questionIds) {
+  if (params.mode === 'bookmarks') {
+    // Bookmarks: no shuffle, show as-is
+    quizQuestions = allQuestions;
+  } else if (savedRaw?.questionIds) {
     // Restore saved question order
     const idMap = {};
     allQuestions.forEach(q => idMap[q.id] = q);
