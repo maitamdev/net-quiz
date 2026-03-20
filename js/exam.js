@@ -2,7 +2,7 @@
    NetQuiz - Exam Mode
    ======================================== */
 
-import { fetchExamQuestions, saveResult } from './data.js';
+import { fetchExamQuestions, saveResult, toggleBookmark } from './data.js';
 
 export async function renderExam(container) {
   // Show loading
@@ -265,9 +265,11 @@ export async function renderExam(container) {
       });
     });
 
-    // Flag
+    // Flag / Bookmark
     container.querySelector('#flagBtn')?.addEventListener('click', () => {
+      const q = examQuestions[state.current];
       state.flagged.has(state.current) ? state.flagged.delete(state.current) : state.flagged.add(state.current);
+      toggleBookmark(q.id);
       render();
     });
 

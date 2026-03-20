@@ -2,7 +2,7 @@
    NetQuiz - Quiz Interface
    ======================================== */
 
-import { fetchQuestions, saveResult } from './data.js';
+import { fetchQuestions, saveResult, toggleBookmark, fetchBookmarkedQuestions } from './data.js';
 
 export async function renderQuiz(container, params = {}) {
   // Show loading
@@ -10,7 +10,9 @@ export async function renderQuiz(container, params = {}) {
 
   // Fetch questions from Supabase
   let allQuestions = [];
-  if (params.chapter) {
+  if (params.mode === 'bookmarks') {
+    allQuestions = await fetchBookmarkedQuestions();
+  } else if (params.chapter) {
     allQuestions = await fetchQuestions(parseInt(params.chapter));
   } else {
     allQuestions = await fetchQuestions();
@@ -216,13 +218,16 @@ export async function renderQuiz(container, params = {}) {
       });
     });
 
-    // Flag
-    container.querySelector('#flagBtn')?.addEventListener('click', () => {
+    // Flag / Bookmark
+    container.querySelector('#flagBtn')?.addEventListener('click', async () => {
+      const q = quizQuestions[state.current];
       if (state.flagged.has(state.current)) {
         state.flagged.delete(state.current);
       } else {
         state.flagged.add(state.current);
       }
+      // Save to Supabase
+      toggleBookmark(q.id);
       saveState();
       render();
     });
