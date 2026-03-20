@@ -74,13 +74,24 @@ export async function renderQuiz(container, params = {}) {
           <div class="quiz-question-card">
             <div class="quiz-question-text">${q.text}</div>
             <div class="quiz-answers" id="quizAnswers">
-              ${q.answers.map(a => `
-                <button class="quiz-answer${state.answers[state.current] === a.letter ? ' selected' : ''}"
-                  data-letter="${a.letter}" id="answer-${a.letter}">
-                  <div class="quiz-answer-letter">${a.letter}</div>
-                  <div class="quiz-answer-text">${a.text}</div>
-                </button>
-              `).join('')}
+              ${q.answers.map(a => {
+                let cls = 'quiz-answer';
+                const answered = state.answers[state.current] !== null;
+                if (answered) {
+                  if (a.letter === q.correct) cls += ' correct';
+                  else if (a.letter === state.answers[state.current]) cls += ' incorrect';
+                  cls += ' locked';
+                } else if (state.answers[state.current] === a.letter) {
+                  cls += ' selected';
+                }
+                return `
+                  <button class="${cls}"
+                    data-letter="${a.letter}" id="answer-${a.letter}"${answered ? ' disabled' : ''}>
+                    <div class="quiz-answer-letter">${a.letter}</div>
+                    <div class="quiz-answer-text">${a.text}</div>
+                  </button>
+                `;
+              }).join('')}
             </div>
 
             <div class="quiz-explanation${state.showExplanation ? ' visible' : ''}" id="explanationPanel">
@@ -131,16 +142,27 @@ export async function renderQuiz(container, params = {}) {
     // Answer selection
     container.querySelectorAll('.quiz-answer').forEach(btn => {
       btn.addEventListener('click', () => {
+        if (state.answers[state.current] !== null) return; // Already answered
         const letter = btn.dataset.letter;
+        const q = quizQuestions[state.current];
         state.answers[state.current] = letter;
 
-        // Update UI without full re-render
+        // Show correct/incorrect on all answers
         container.querySelectorAll('.quiz-answer').forEach(a => {
           a.classList.remove('selected');
-          if (a.dataset.letter === letter) {
-            a.classList.add('selected');
+          a.classList.add('locked');
+          a.disabled = true;
+          if (a.dataset.letter === q.correct) {
+            a.classList.add('correct');
+          } else if (a.dataset.letter === letter) {
+            a.classList.add('incorrect');
           }
         });
+
+        // Auto-show explanation
+        state.showExplanation = true;
+        const panel = container.querySelector('#explanationPanel');
+        if (panel) panel.classList.add('visible');
 
         // Update nav item
         const navItem = container.querySelector(`#qnav-${state.current}`);
