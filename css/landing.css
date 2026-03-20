@@ -127,8 +127,8 @@
 }
 
 .hero-author-img {
-  width: 80px;
-  height: 80px;
+  width: 200px;
+  height: 200px;
   border-radius: 50%;
   object-fit: cover;
   border: 3px solid rgba(99, 102, 241, 0.4);
