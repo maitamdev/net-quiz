@@ -20,7 +20,10 @@ export function renderLanding(container) {
             ÔN TẬP<br/>
             <span class="hero-gradient-text">MẠNG MÁY TÍNH</span>
           </h1>
-          <p>Trang web này được tạo ra để giúp các bạn ôn tập môn Mạng Máy Tính một cách hiệu quả nhất. Mọi bug hoặc thắc mắc vui lòng liên hệ <a href="mailto:maitamit062005@gmail.com" style="color: var(--indigo-400); text-decoration: underline;">maitamit062005@gmail.com</a>. Chúc bạn ôn tập và thi thật tốt! 🎉</p>
+          <div class="hero-author">
+            <img src="/images/author.jpg" alt="Tác giả" class="hero-author-img" />
+            <p>Trang web này được tạo ra để giúp các bạn ôn tập môn Mạng Máy Tính một cách hiệu quả nhất. Mọi bug hoặc thắc mắc vui lòng liên hệ <a href="mailto:maitamit062005@gmail.com" style="color: var(--indigo-400); text-decoration: underline;">maitamit062005@gmail.com</a>. Chúc bạn ôn tập và thi thật tốt! 🎉</p>
+          </div>
           <div class="hero-buttons">
             <a href="#/practice" class="btn btn-primary btn-lg hero-btn-glow" id="cta-start">
               <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="5 3 19 12 5 21 5 3"/></svg>
