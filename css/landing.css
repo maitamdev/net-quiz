@@ -215,7 +215,7 @@
 .stats-section {
   position: relative;
   z-index: 1;
-  padding: var(--space-20) 0;
+  padding: var(--space-8) 0 var(--space-4);
 }
 
 .stats-header {
@@ -335,10 +335,11 @@
   position: relative;
   z-index: 1;
   border-top: 1px solid var(--border-subtle);
-  padding: var(--space-8) 0;
+  padding: var(--space-4) 0;
   text-align: center;
   color: var(--text-tertiary);
   font-size: var(--text-sm);
+  margin-bottom: 0;
 }
 
 .footer a {
