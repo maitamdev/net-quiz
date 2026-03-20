@@ -1,0 +1,367 @@
+{
+  "chapter": 3,
+  "title": "Chương 3 - Tầng giao vận",
+  "total_questions": 30,
+  "questions": [
+    {
+      "id": 1,
+      "question": "Tầng giao vận trong mô hình TCP/IP có chức năng chính là gì?",
+      "options": {
+        "A": "Truyền bit trên đường truyền",
+        "B": "Truyền dữ liệu đầu cuối đến đầu cuối giữa các tiến trình",
+        "C": "Định tuyến giữa các mạng",
+        "D": "Phân giải tên miền"
+      },
+      "correct_answer": "B",
+      "explanation": "Tầng giao vận chịu trách nhiệm truyền dữ liệu từ tiến trình này đến tiến trình khác theo kiểu đầu cuối đến đầu cuối."
+    },
+    {
+      "id": 2,
+      "question": "Hai giao thức phổ biến nhất ở tầng giao vận là gì?",
+      "options": {
+        "A": "IP và ARP",
+        "B": "HTTP và FTP",
+        "C": "TCP và UDP",
+        "D": "DNS và SMTP"
+      },
+      "correct_answer": "C",
+      "explanation": "TCP và UDP là hai giao thức chính của tầng giao vận."
+    },
+    {
+      "id": 3,
+      "question": "TCP là giao thức có đặc điểm nào?",
+      "options": {
+        "A": "Không hướng kết nối",
+        "B": "Không đảm bảo tin cậy",
+        "C": "Hướng kết nối và tin cậy",
+        "D": "Chỉ dùng cho mạng LAN"
+      },
+      "correct_answer": "C",
+      "explanation": "TCP là giao thức hướng kết nối, có cơ chế kiểm soát lỗi, xác nhận và truyền lại."
+    },
+    {
+      "id": 4,
+      "question": "UDP là giao thức có đặc điểm nào?",
+      "options": {
+        "A": "Hướng kết nối",
+        "B": "Không hướng kết nối",
+        "C": "Luôn đảm bảo dữ liệu đến nơi đầy đủ",
+        "D": "Có bắt tay 3 bước"
+      },
+      "correct_answer": "B",
+      "explanation": "UDP là giao thức không hướng kết nối, đơn giản và không đảm bảo độ tin cậy như TCP."
+    },
+    {
+      "id": 5,
+      "question": "Ưu điểm lớn nhất của UDP là gì?",
+      "options": {
+        "A": "Độ trễ thấp, truyền nhanh",
+        "B": "Luôn đáng tin cậy hơn TCP",
+        "C": "Có kiểm soát tắc nghẽn mạnh hơn",
+        "D": "Không cần cổng port"
+      },
+      "correct_answer": "A",
+      "explanation": "Do ít cơ chế kiểm soát hơn TCP nên UDP có tốc độ nhanh và độ trễ thấp."
+    },
+    {
+      "id": 6,
+      "question": "TCP sử dụng cơ chế nào để thiết lập kết nối?",
+      "options": {
+        "A": "Bắt tay 2 bước",
+        "B": "Bắt tay 3 bước",
+        "C": "Bắt tay 4 bước",
+        "D": "Không cần bắt tay"
+      },
+      "correct_answer": "B",
+      "explanation": "TCP thiết lập kết nối bằng cơ chế bắt tay 3 bước: SYN, SYN-ACK, ACK."
+    },
+    {
+      "id": 7,
+      "question": "Trong bắt tay 3 bước của TCP, gói đầu tiên client gửi đi thường mang cờ nào?",
+      "options": {
+        "A": "ACK",
+        "B": "FIN",
+        "C": "SYN",
+        "D": "RST"
+      },
+      "correct_answer": "C",
+      "explanation": "Client khởi tạo kết nối bằng cách gửi gói có cờ SYN."
+    },
+    {
+      "id": 8,
+      "question": "Sau khi nhận được gói SYN từ client, server thường phản hồi bằng gì?",
+      "options": {
+        "A": "FIN",
+        "B": "SYN và ACK",
+        "C": "RST",
+        "D": "PSH"
+      },
+      "correct_answer": "B",
+      "explanation": "Bước thứ hai của bắt tay 3 bước là server gửi SYN-ACK."
+    },
+    {
+      "id": 9,
+      "question": "Bước cuối cùng trong cơ chế bắt tay 3 bước của TCP là gì?",
+      "options": {
+        "A": "Client gửi ACK",
+        "B": "Server gửi FIN",
+        "C": "Client gửi RST",
+        "D": "Server gửi dữ liệu ngay lập tức"
+      },
+      "correct_answer": "A",
+      "explanation": "Client gửi ACK để hoàn tất thiết lập kết nối TCP."
+    },
+    {
+      "id": 10,
+      "question": "Khi kết thúc kết nối TCP, cờ nào thường được dùng để yêu cầu đóng kết nối?",
+      "options": {
+        "A": "SYN",
+        "B": "ACK",
+        "C": "FIN",
+        "D": "URG"
+      },
+      "correct_answer": "C",
+      "explanation": "FIN được dùng để báo hiệu phía gửi muốn kết thúc kết nối."
+    },
+    {
+      "id": 11,
+      "question": "Nếu nhận được gói FIN/ACK từ phía bên kia, phía còn lại thường làm gì?",
+      "options": {
+        "A": "Gửi ACK xác nhận",
+        "B": "Tắt card mạng ngay",
+        "C": "Gửi SYN mới",
+        "D": "Bỏ qua"
+      },
+      "correct_answer": "A",
+      "explanation": "Khi nhận FIN hoặc FIN/ACK, phía bên kia cần gửi ACK để xác nhận."
+    },
+    {
+      "id": 12,
+      "question": "Đơn vị dữ liệu của TCP ở tầng giao vận thường được gọi là gì?",
+      "options": {
+        "A": "Frame",
+        "B": "Segment",
+        "C": "Packet",
+        "D": "Bit"
+      },
+      "correct_answer": "B",
+      "explanation": "Ở tầng giao vận, dữ liệu TCP thường được gọi là segment."
+    },
+    {
+      "id": 13,
+      "question": "Đơn vị dữ liệu của UDP ở tầng giao vận thường được gọi là gì?",
+      "options": {
+        "A": "Datagram",
+        "B": "Cell",
+        "C": "Frame",
+        "D": "Signal"
+      },
+      "correct_answer": "A",
+      "explanation": "Dữ liệu của UDP thường được gọi là UDP datagram."
+    },
+    {
+      "id": 14,
+      "question": "Port ở tầng giao vận dùng để làm gì?",
+      "options": {
+        "A": "Xác định đường dây truyền vật lý",
+        "B": "Xác định tiến trình hoặc ứng dụng nguồn và đích",
+        "C": "Mã hóa tín hiệu điện",
+        "D": "Thay thế địa chỉ IP"
+      },
+      "correct_answer": "B",
+      "explanation": "Port giúp phân biệt dữ liệu được gửi đến ứng dụng nào trên máy đích."
+    },
+    {
+      "id": 15,
+      "question": "Số hiệu port có độ dài bao nhiêu bit?",
+      "options": {
+        "A": "8 bit",
+        "B": "16 bit",
+        "C": "24 bit",
+        "D": "32 bit"
+      },
+      "correct_answer": "B",
+      "explanation": "Port trong TCP và UDP có độ dài 16 bit."
+    },
+    {
+      "id": 16,
+      "question": "Trường checksum trong TCP và UDP có độ dài bao nhiêu bit?",
+      "options": {
+        "A": "8 bit",
+        "B": "16 bit",
+        "C": "32 bit",
+        "D": "64 bit"
+      },
+      "correct_answer": "B",
+      "explanation": "Checksum của TCP và UDP có độ dài 16 bit để phát hiện lỗi dữ liệu."
+    },
+    {
+      "id": 17,
+      "question": "Trong UDP, trường nào cho biết độ dài của toàn bộ segment?",
+      "options": {
+        "A": "Checksum",
+        "B": "Length",
+        "C": "Sequence Number",
+        "D": "Window Size"
+      },
+      "correct_answer": "B",
+      "explanation": "Trường Length trong UDP cho biết chiều dài toàn bộ datagram."
+    },
+    {
+      "id": 18,
+      "question": "Kích thước phần header của UDP là bao nhiêu?",
+      "options": {
+        "A": "4 byte",
+        "B": "8 byte",
+        "C": "16 byte",
+        "D": "20 byte"
+      },
+      "correct_answer": "B",
+      "explanation": "UDP header có kích thước cố định là 8 byte."
+    },
+    {
+      "id": 19,
+      "question": "TCP có cơ chế nào mà UDP không có?",
+      "options": {
+        "A": "Địa chỉ IP",
+        "B": "Bắt tay thiết lập kết nối và xác nhận nhận dữ liệu",
+        "C": "Trường độ dài",
+        "D": "Truyền dữ liệu"
+      },
+      "correct_answer": "B",
+      "explanation": "TCP có cơ chế thiết lập kết nối, đánh số thứ tự, ACK, truyền lại, còn UDP thì không."
+    },
+    {
+      "id": 20,
+      "question": "UDP có cơ chế kiểm soát lưu lượng hay không?",
+      "options": {
+        "A": "Có đầy đủ như TCP",
+        "B": "Không",
+        "C": "Chỉ có trong mạng LAN",
+        "D": "Chỉ có khi gửi video"
+      },
+      "correct_answer": "B",
+      "explanation": "UDP không có cơ chế kiểm soát lưu lượng như TCP."
+    },
+    {
+      "id": 21,
+      "question": "Nếu tốc độ dữ liệu ở trạm thu chậm hơn tốc độ dữ liệu ở trạm phát thì điều gì dễ xảy ra?",
+      "options": {
+        "A": "Địa chỉ IP bị đổi",
+        "B": "Bộ đệm phía nhận bị tràn",
+        "C": "Port tự đóng",
+        "D": "Mạng tự tăng tốc"
+      },
+      "correct_answer": "B",
+      "explanation": "Khi bên nhận xử lý chậm hơn bên gửi, dữ liệu có thể làm tràn bộ đệm."
+    },
+    {
+      "id": 22,
+      "question": "Kiểm soát lưu lượng ở tầng giao vận nhằm mục đích gì?",
+      "options": {
+        "A": "Tăng điện áp trên đường truyền",
+        "B": "Tránh cho bên nhận bị quá tải",
+        "C": "Thay đổi địa chỉ MAC",
+        "D": "Giảm số lượng router"
+      },
+      "correct_answer": "B",
+      "explanation": "Kiểm soát lưu lượng giúp tốc độ gửi phù hợp với khả năng nhận của phía đích."
+    },
+    {
+      "id": 23,
+      "question": "TCP dùng số thứ tự Sequence Number để làm gì?",
+      "options": {
+        "A": "Đánh số dữ liệu để sắp xếp đúng thứ tự",
+        "B": "Đổi IP động",
+        "C": "Định tuyến sang mạng khác",
+        "D": "Tăng tốc phần cứng"
+      },
+      "correct_answer": "A",
+      "explanation": "Sequence Number giúp dữ liệu được nhận đúng thứ tự và phát hiện phần bị mất."
+    },
+    {
+      "id": 24,
+      "question": "ACK trong TCP có ý nghĩa gì?",
+      "options": {
+        "A": "Yêu cầu kết nối",
+        "B": "Xác nhận đã nhận dữ liệu",
+        "C": "Báo lỗi địa chỉ",
+        "D": "Kết thúc phiên vật lý"
+      },
+      "correct_answer": "B",
+      "explanation": "ACK là cơ chế xác nhận dữ liệu hoặc gói tin đã được nhận."
+    },
+    {
+      "id": 25,
+      "question": "Dịch vụ nào phù hợp hơn với TCP?",
+      "options": {
+        "A": "Truyền file",
+        "B": "Truyền âm thanh thời gian thực đơn giản",
+        "C": "Truyền video trực tiếp rất nhạy độ trễ",
+        "D": "Gửi gói quảng bá đơn giản"
+      },
+      "correct_answer": "A",
+      "explanation": "Truyền file cần độ tin cậy cao nên thường dùng TCP."
+    },
+    {
+      "id": 26,
+      "question": "Dịch vụ nào thường phù hợp hơn với UDP?",
+      "options": {
+        "A": "FTP",
+        "B": "Email SMTP",
+        "C": "Truyền thoại hoặc video thời gian thực",
+        "D": "Tải trang web có yêu cầu độ tin cậy cao"
+      },
+      "correct_answer": "C",
+      "explanation": "Ứng dụng thời gian thực ưu tiên tốc độ và độ trễ thấp nên thường dùng UDP."
+    },
+    {
+      "id": 27,
+      "question": "Thời gian thiết lập kết nối của UDP là bao nhiêu?",
+      "options": {
+        "A": "1 bước",
+        "B": "2 bước",
+        "C": "3 bước",
+        "D": "Bằng 0"
+      },
+      "correct_answer": "D",
+      "explanation": "UDP không cần thiết lập kết nối trước khi truyền nên thời gian thiết lập coi như bằng 0."
+    },
+    {
+      "id": 28,
+      "question": "TCP header tối thiểu thường có kích thước bao nhiêu?",
+      "options": {
+        "A": "8 byte",
+        "B": "12 byte",
+        "C": "20 byte",
+        "D": "40 byte"
+      },
+      "correct_answer": "C",
+      "explanation": "Phần header TCP tối thiểu là 20 byte, có thể lớn hơn nếu có tùy chọn."
+    },
+    {
+      "id": 29,
+      "question": "Chức năng ghép kênh và tách kênh ở tầng giao vận được thực hiện chủ yếu dựa vào gì?",
+      "options": {
+        "A": "Địa chỉ MAC",
+        "B": "Số hiệu port",
+        "C": "Tên miền",
+        "D": "Loại cáp mạng"
+      },
+      "correct_answer": "B",
+      "explanation": "Port giúp ghép nhiều ứng dụng dùng chung mạng và tách dữ liệu đến đúng ứng dụng."
+    },
+    {
+      "id": 30,
+      "question": "Kết luận nào sau đây đúng nhất về TCP và UDP?",
+      "options": {
+        "A": "TCP nhanh hơn UDP trong mọi trường hợp",
+        "B": "UDP luôn tốt hơn TCP",
+        "C": "TCP ưu tiên độ tin cậy, UDP ưu tiên tốc độ và đơn giản",
+        "D": "TCP và UDP hoàn toàn giống nhau"
+      },
+      "correct_answer": "C",
+      "explanation": "TCP và UDP phục vụ các mục đích khác nhau: TCP thiên về độ tin cậy, UDP thiên về tốc độ và độ trễ thấp."
+    }
+  ]
+}
