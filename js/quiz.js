@@ -1,0 +1,227 @@
+/* ========================================
+   NetQuiz - Quiz Interface
+   ======================================== */
+
+import { questions } from './data.js';
+
+export function renderQuiz(container, params = {}) {
+  const quizQuestions = params.mode === 'review'
+    ? questions.slice(0, 10)
+    : params.mode === 'bookmarks'
+    ? questions.slice(0, 8)
+    : params.chapter
+    ? questions.filter(q => q.chapter === parseInt(params.chapter))
+    : questions;
+
+  const totalQ = quizQuestions.length;
+  const state = {
+    current: 0,
+    answers: new Array(totalQ).fill(null),
+    flagged: new Set(),
+    showExplanation: false,
+  };
+
+  function render() {
+    const q = quizQuestions[state.current];
+    container.innerHTML = `
+      <div class="quiz-page">
+        <!-- Left: Navigation -->
+        <aside class="quiz-nav">
+          <div class="quiz-nav-header">
+            <div class="quiz-nav-title">${getTitle(params)}</div>
+            <div class="quiz-nav-subtitle">${totalQ} câu hỏi</div>
+          </div>
+          <div class="quiz-nav-grid" id="quizNavGrid">
+            ${quizQuestions.map((_, i) => `
+              <button class="quiz-nav-item${i === state.current ? ' current' : ''}${state.answers[i] !== null ? ' answered' : ''}${state.flagged.has(i) ? ' flagged' : ''}"
+                data-index="${i}" id="qnav-${i}">
+                ${i + 1}
+              </button>
+            `).join('')}
+          </div>
+          <div class="quiz-nav-legend">
+            <div class="legend-item"><div class="legend-dot current-dot"></div> Hiện tại</div>
+            <div class="legend-item"><div class="legend-dot answered-dot"></div> Đã trả lời</div>
+            <div class="legend-item"><div class="legend-dot flagged-dot"></div> Đánh dấu</div>
+            <div class="legend-item"><div class="legend-dot unanswered-dot"></div> Chưa trả lời</div>
+          </div>
+        </aside>
+
+        <!-- Right: Question Content -->
+        <div class="quiz-main">
+          <div class="quiz-question-header">
+            <div class="quiz-question-number">
+              Câu <strong>${state.current + 1}</strong> / ${totalQ}
+              <span style="margin-left: var(--space-3);">
+                <span class="badge badge-primary">${q.topic}</span>
+              </span>
+            </div>
+            <button class="quiz-flag-btn${state.flagged.has(state.current) ? ' flagged' : ''}" id="flagBtn">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="${state.flagged.has(state.current) ? 'currentColor' : 'none'}" stroke="currentColor" stroke-width="2">
+                <path d="M4 15s1-1 4-1 5 2 8 2 4-1 4-1V3s-1 1-4 1-5-2-8-2-4 1-4 1z"/>
+                <line x1="4" y1="22" x2="4" y2="15"/>
+              </svg>
+              Đánh dấu
+            </button>
+          </div>
+
+          <div class="quiz-question-card">
+            <div class="quiz-question-text">${q.text}</div>
+            <div class="quiz-answers" id="quizAnswers">
+              ${q.answers.map(a => `
+                <button class="quiz-answer${state.answers[state.current] === a.letter ? ' selected' : ''}"
+                  data-letter="${a.letter}" id="answer-${a.letter}">
+                  <div class="quiz-answer-letter">${a.letter}</div>
+                  <div class="quiz-answer-text">${a.text}</div>
+                </button>
+              `).join('')}
+            </div>
+
+            <div class="quiz-explanation${state.showExplanation ? ' visible' : ''}" id="explanationPanel">
+              <div class="quiz-explanation-title">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/><line x1="12" y1="17" x2="12.01" y2="17"/>
+                </svg>
+                Giải thích AI
+              </div>
+              <p>${q.explanation}</p>
+            </div>
+          </div>
+
+          <div class="quiz-actions">
+            <div class="quiz-actions-left">
+              <button class="btn btn-secondary" id="prevBtn" ${state.current === 0 ? 'disabled style="opacity:0.5"' : ''}>
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="15 18 9 12 15 6"/></svg>
+                Trước
+              </button>
+            </div>
+            <div class="quiz-actions-right">
+              <button class="btn btn-ghost" id="showExplainBtn">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/><line x1="12" y1="17" x2="12.01" y2="17"/>
+                </svg>
+                Giải thích
+              </button>
+              ${state.current === totalQ - 1
+                ? `<button class="btn btn-success" id="submitQuizBtn">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
+                    Nộp bài
+                  </button>`
+                : `<button class="btn btn-primary" id="nextBtn">
+                    Tiếp
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg>
+                  </button>`
+              }
+            </div>
+          </div>
+        </div>
+      </div>
+    `;
+
+    attachEvents();
+  }
+
+  function attachEvents() {
+    // Answer selection
+    container.querySelectorAll('.quiz-answer').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const letter = btn.dataset.letter;
+        state.answers[state.current] = letter;
+
+        // Update UI without full re-render
+        container.querySelectorAll('.quiz-answer').forEach(a => {
+          a.classList.remove('selected');
+          if (a.dataset.letter === letter) {
+            a.classList.add('selected');
+          }
+        });
+
+        // Update nav item
+        const navItem = container.querySelector(`#qnav-${state.current}`);
+        if (navItem) navItem.classList.add('answered');
+      });
+    });
+
+    // Nav grid
+    container.querySelectorAll('.quiz-nav-item').forEach(item => {
+      item.addEventListener('click', () => {
+        state.current = parseInt(item.dataset.index);
+        state.showExplanation = false;
+        render();
+      });
+    });
+
+    // Flag
+    container.querySelector('#flagBtn')?.addEventListener('click', () => {
+      if (state.flagged.has(state.current)) {
+        state.flagged.delete(state.current);
+      } else {
+        state.flagged.add(state.current);
+      }
+      render();
+    });
+
+    // Next/Prev
+    container.querySelector('#nextBtn')?.addEventListener('click', () => {
+      if (state.current < totalQ - 1) {
+        state.current++;
+        state.showExplanation = false;
+        render();
+      }
+    });
+
+    container.querySelector('#prevBtn')?.addEventListener('click', () => {
+      if (state.current > 0) {
+        state.current--;
+        state.showExplanation = false;
+        render();
+      }
+    });
+
+    // Explain
+    container.querySelector('#showExplainBtn')?.addEventListener('click', () => {
+      state.showExplanation = !state.showExplanation;
+      render();
+    });
+
+    // Submit
+    container.querySelector('#submitQuizBtn')?.addEventListener('click', () => {
+      // Calculate score
+      let correct = 0;
+      quizQuestions.forEach((q, i) => {
+        if (state.answers[i] === q.correct) correct++;
+      });
+
+      // Navigate to results
+      window.location.hash = `/results?correct=${correct}&total=${totalQ}&time=1245`;
+    });
+  }
+
+  if (totalQ === 0) {
+    container.innerHTML = `
+      <div class="quiz-page" style="justify-content: center; align-items: center; text-align: center; padding: var(--space-16);">
+        <div class="empty-state">
+          <svg width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="var(--text-tertiary)" stroke-width="1.5">
+            <path d="M12 20h9"/><path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"/>
+          </svg>
+          <h3>Chưa có câu hỏi</h3>
+          <p>Câu hỏi sẽ xuất hiện sau khi kết nối với backend.</p>
+          <a href="#/practice" class="btn btn-primary" style="margin-top: var(--space-6);">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="15 18 9 12 15 6"/></svg>
+            Quay lại Luyện tập
+          </a>
+        </div>
+      </div>
+    `;
+    return;
+  }
+
+  render();
+}
+
+function getTitle(params) {
+  if (params.mode === 'review') return 'Câu hỏi Sai';
+  if (params.mode === 'bookmarks') return 'Câu hỏi Đánh dấu';
+  if (params.chapter) return `Chương ${params.chapter}`;
+  return 'Luyện tập';
+}

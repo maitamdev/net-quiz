@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>NetQuiz - Luyện Thi Mạng Máy Tính</title>
+  <meta name="description" content="Luyện tập Mạng Máy Tính với các câu hỏi trắc nghiệm thông minh, thi thử và theo dõi tiến độ học tập." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="/css/variables.css" />
+  <link rel="stylesheet" href="/css/base.css" />
+  <link rel="stylesheet" href="/css/components.css" />
+  <link rel="stylesheet" href="/css/landing.css" />
+  <link rel="stylesheet" href="/css/practice.css" />
+  <link rel="stylesheet" href="/css/quiz.css" />
+  <link rel="stylesheet" href="/css/exam.css" />
+  <link rel="stylesheet" href="/css/results.css" />
+  <link rel="stylesheet" href="/css/dashboard.css" />
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🌐</text></svg>" />
+</head>
+<body>
+  <!-- Navigation -->
+  <nav class="navbar" id="navbar">
+    <div class="nav-container">
+      <a href="#/" class="nav-logo" id="nav-logo">
+        <div class="logo-icon">
+          <svg width="28" height="28" viewBox="0 0 28 28" fill="none">
+            <circle cx="14" cy="14" r="12" stroke="url(#logo-grad)" stroke-width="2" fill="none"/>
+            <circle cx="14" cy="6" r="2.5" fill="url(#logo-grad)"/>
+            <circle cx="6" cy="18" r="2.5" fill="url(#logo-grad)"/>
+            <circle cx="22" cy="18" r="2.5" fill="url(#logo-grad)"/>
+            <circle cx="14" cy="14" r="2.5" fill="url(#logo-grad)"/>
+            <line x1="14" y1="6" x2="14" y2="14" stroke="url(#logo-grad)" stroke-width="1.5"/>
+            <line x1="6" y1="18" x2="14" y2="14" stroke="url(#logo-grad)" stroke-width="1.5"/>
+            <line x1="22" y1="18" x2="14" y2="14" stroke="url(#logo-grad)" stroke-width="1.5"/>
+            <defs>
+              <linearGradient id="logo-grad" x1="0" y1="0" x2="28" y2="28">
+                <stop offset="0%" stop-color="#818cf8"/>
+                <stop offset="100%" stop-color="#06b6d4"/>
+              </linearGradient>
+            </defs>
+          </svg>
+        </div>
+        <span class="logo-text">Net<span class="logo-highlight">Quiz</span></span>
+      </a>
+      <div class="nav-links" id="nav-links">
+        <a href="#/" class="nav-link active" data-page="landing">Trang chủ</a>
+        <a href="#/practice" class="nav-link" data-page="practice">Luyện tập</a>
+        <a href="#/dashboard" class="nav-link" data-page="dashboard">Bảng điều khiển</a>
+      </div>
+      <div class="nav-actions">
+        <button class="btn btn-ghost nav-btn" id="nav-profile-btn">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/>
+            <circle cx="12" cy="7" r="4"/>
+          </svg>
+          <span>Hồ sơ</span>
+        </button>
+        <button class="hamburger" id="hamburger" aria-label="Toggle menu">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Main Content -->
+  <main id="app"></main>
+
+  <!-- Scripts -->
+  <script type="module" src="/js/app.js"></script>
+</body>
+</html>
