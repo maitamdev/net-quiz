@@ -3,6 +3,7 @@
    ======================================== */
 
 import { supabase } from './supabase.js';
+import { getCurrentUser } from './auth.js';
 
 // === Fetch Chapters ===
 export async function fetchChapters() {
@@ -52,6 +53,9 @@ export async function fetchExamQuestions(limit = 15) {
 
 // === Save Result ===
 export async function saveResult({ score, total, timeSpent, mode, chapterId }) {
+  const user = await getCurrentUser();
+  if (!user) return; // Nếu chưa login thì không lưu kết quả vào CSDL chung (chỉ tính nháp)
+
   const { error } = await supabase.from('results').insert({
     score,
     total,
@@ -111,6 +115,12 @@ export async function fetchDashboardStats() {
 
 // === Bookmarks ===
 export async function toggleBookmark(questionId) {
+  const user = await getCurrentUser();
+  if (!user) {
+    alert('Vui lòng Đăng nhập để sử dụng tính năng Lưu câu hỏi!');
+    return false;
+  }
+
   const { data: existing } = await supabase
     .from('bookmarks')
     .select('id')

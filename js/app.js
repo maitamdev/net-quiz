@@ -10,9 +10,14 @@ import { renderExam } from './exam.js';
 import { renderResults } from './results.js';
 import { renderDashboard } from './dashboard.js';
 
+import { getCurrentUser, signInWithGoogle, signOut } from './auth.js';
+
 // Initialize app
 const app = document.getElementById('app');
 const router = new Router(app);
+
+// Global user state
+let currentUser = null;
 
 // Register routes
 router
@@ -21,7 +26,14 @@ router
   .addRoute('/quiz', renderQuiz)
   .addRoute('/exam', renderExam)
   .addRoute('/results', renderResults)
-  .addRoute('/dashboard', renderDashboard);
+  .addRoute('/dashboard', async (container) => {
+    if (!currentUser) {
+      alert('Vui lòng Đăng nhập để sử dụng Bảng điều khiển!');
+      window.location.hash = '/';
+      return;
+    }
+    await renderDashboard(container);
+  });
 
 // === Navbar scroll effect ===
 const navbar = document.getElementById('navbar');
@@ -32,6 +44,26 @@ window.addEventListener('scroll', () => {
     navbar.classList.remove('scrolled');
   }
 });
+
+// === Auth UI logic ===
+const profileBtn = document.getElementById('nav-profile-btn');
+
+async function initAuth() {
+  currentUser = await getCurrentUser();
+  if (currentUser) {
+    profileBtn.querySelector('span').innerText = 'Đăng xuất';
+    profileBtn.classList.add('logged-in');
+    profileBtn.onclick = () => {
+      if(confirm('Bạn muốn đăng xuất?')) signOut();
+    };
+  } else {
+    profileBtn.querySelector('span').innerText = 'Đăng nhập';
+    profileBtn.onclick = () => {
+      signInWithGoogle();
+    };
+  }
+}
+initAuth();
 
 // === Mobile hamburger menu ===
 const hamburger = document.getElementById('hamburger');
