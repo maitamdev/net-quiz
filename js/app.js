@@ -10,7 +10,7 @@ import { renderExam } from './exam.js';
 import { renderResults } from './results.js';
 import { renderDashboard } from './dashboard.js';
 
-import { getCurrentUser, signInWithGoogle, signOut } from './auth.js';
+import { getCurrentUser, signInAnonymous, signOut } from './auth.js';
 
 // Initialize app
 const app = document.getElementById('app');
@@ -50,16 +50,18 @@ const profileBtn = document.getElementById('nav-profile-btn');
 
 async function initAuth() {
   currentUser = await getCurrentUser();
+  if (!currentUser) {
+    // Tự động đăng nhập ẩn danh nếu chưa có session
+    await signInAnonymous();
+    currentUser = await getCurrentUser();
+  }
+  
   if (currentUser) {
-    profileBtn.querySelector('span').innerText = 'Đăng xuất';
+    // Chỉ hiển thị nút Đăng xuất (Hoặc ẩn đi nếu bạn không muốn khách tự đăng xuất)
+    profileBtn.querySelector('span').innerText = 'Hồ sơ (Khách)';
     profileBtn.classList.add('logged-in');
     profileBtn.onclick = () => {
-      if(confirm('Bạn muốn đăng xuất?')) signOut();
-    };
-  } else {
-    profileBtn.querySelector('span').innerText = 'Đăng nhập';
-    profileBtn.onclick = () => {
-      signInWithGoogle();
+      alert(`Bạn đang dùng tài khoản Ẩn danh.\nID: ${currentUser.id.slice(0,8)}...`);
     };
   }
 }

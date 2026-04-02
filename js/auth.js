@@ -4,23 +4,16 @@
 
 import { supabase } from './supabase.js';
 
-export async function signInWithGoogle() {
-  const { data, error } = await supabase.auth.signInWithOAuth({
-    provider: 'google',
-    options: {
-      redirectTo: window.location.origin + window.location.pathname,
-    }
-  });
+export async function signInAnonymous() {
+  const { data, error } = await supabase.auth.signInAnonymously();
   if (error) {
-    console.error('Lỗi đăng nhập Google:', error);
-    alert('Không thể đăng nhập. Vui lòng thử lại!');
+    console.error('Lỗi đăng nhập ẩn danh:', error);
   }
 }
 
 export async function signOut() {
   const { error } = await supabase.auth.signOut();
   if (error) console.error('Lỗi đăng xuất:', error);
-  // Reload sau khi logout
   window.location.reload();
 }
 
