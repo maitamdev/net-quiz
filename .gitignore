@@ -3,3 +3,12 @@ dist
 .env
 .env.local
 *.log
+
+# Ignore SQL script files
+*.sql
+sql/
+
+# Ignore JSON data files but keep Node project files
+*.json
+!package.json
+!package-lock.json
